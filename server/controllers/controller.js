@@ -4,6 +4,6 @@ const User = mongoose.model('User')
 //
 mongoose.connect('mongodb://localhost/cold')
 
-model.exports = {
+module.exports = {
 	//route details/functions
 }
