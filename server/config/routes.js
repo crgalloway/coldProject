@@ -6,4 +6,7 @@ module.exports = (app) => {
 	//app.get('/users', (req,res)=>{
 	// 	ctrl.addUser(req,res);
 	// })
+	app.get('/labs', (req,res)=>{
+		ctr.getLabs(req,res);
+	})
 }
