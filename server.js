@@ -7,8 +7,8 @@ const port = 8000;
 
 app.use(express.static(__dirname+'/Cold/dist'))
 
-// require('./server/config/mongoose');
-// require('./server/config/routes')(app);
+require('./server/config/mongoose');
+require('./server/config/routes')(app);
 
 app.listen(port, ()=>{
 	console.log("Listening on port:",port)
