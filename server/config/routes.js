@@ -9,4 +9,7 @@ module.exports = (app) => {
 	app.get('/labs', (req,res)=>{
 		ctr.getLabs(req,res);
 	})
+	app.get('/labs/:id', (req,res)=>{
+		ctr.getOneLab(req,res)
+	})
 }
