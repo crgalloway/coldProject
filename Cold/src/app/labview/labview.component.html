@@ -1,0 +1,10 @@
+<p>
+  labview works!
+</p>
+<ul *ngFor='let each of allLabs'>
+	<li><a [routerLink]="['/labdetails/'+each._id]">{{ each.name }}</a>
+		<ul>
+			<li>BioSafety Level: {{ each.BSL }}</li>
+		</ul>
+	</li>
+</ul>

@@ -1,0 +1,18 @@
+<p>
+  labdetails works!
+</p>
+<h1>Details about {{lab.name}}:</h1>
+<h3>BioSafety Level: {{lab.BSL}}</h3>
+<ul>
+	<li>Personnel:
+		<ul>
+			<li *ngFor='let person of lab.resList'>{{ person.name }}</li>
+		</ul>
+	</li>
+	<li>Sample Storage Units:
+		<ul>
+			<li *ngFor='let storage of lab.storageList'><a [routerLink]="['/stordetails/'+storage._id]">{{ storage.name }}</a></li>
+		</ul>
+	</li>
+</ul>
+<button (click)=editLab(lab._id)>Edit</button><br><button (click)=deleteLab(lab._id)>Delete</button>

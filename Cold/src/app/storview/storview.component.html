@@ -1,0 +1,10 @@
+<p>
+  storview works!
+</p>
+<ul *ngFor='let each of allStorage'>
+	<li><a [routerLink]="['/stordetails/'+each._id]">{{ each.name }}</a>
+		<ul>
+			<li>Location: {{ each.location.name }}</li>
+		</ul>
+	</li>
+</ul>

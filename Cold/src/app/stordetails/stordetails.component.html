@@ -1,0 +1,20 @@
+<p>
+  stordetails works!
+</p>
+<h1>Details about {{storage.name}}:</h1>
+<h3>Location: {{ storage.location.name }}</h3>
+<h5>Type: {{ storage.type }}</h5>
+<h5>Temperature: {{ storage.temp }}</h5>
+<ul>
+	<li>Compartments:
+		<ul>
+			<li *ngFor="let each of storage.compartmentList">{{each.name}}</li>
+		</ul>
+	</li>
+	<li>Loose Samples:
+		<ul>
+			<li *ngFor="let each of storage.sampleList">{{each.name}}</li>
+		</ul>
+	</li>
+</ul>
+<button (click)=editStorage(storage._id)>Edit</button><br><button (click)=deleteStorage(storage._id)>Delete</button>
