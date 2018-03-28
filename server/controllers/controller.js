@@ -3,6 +3,7 @@ mongoose.Promise = global.Promise
 const User = mongoose.model('User')
 const Lab = mongoose.model('Lab')
 const Storage = mongoose.model('Storage')
+const Sample = mongoose.model('Sample')
 //
 mongoose.connect('mongodb://localhost/cold')
 
@@ -191,4 +192,57 @@ module.exports = {
 		})
 	},
 	//<== end functions for storage
+	//Functions for samples ==>
+	getSamples: (req,res)=>{
+		Sample.find({}, (err, samples)=>{
+			if(!err){
+				res.json({message: "Success", data: samples})
+			}
+			else{
+				res.json({message: "Error", error: err})
+			}
+		})
+	},
+	getOneSample: (req,res)=>{
+		Sample.findOne({_id: req.params.id}, (err, sample)=>{
+			if(err){
+				res.json({message: "Error", error: err})
+			}
+			else{
+				res.json({message: "Success", data:sample})
+			}
+		})
+	},
+	createSample: (req,res)=>{
+		var sample = new Sample({name: req.body.name, type: req.body.type, container: req.body.container, description: req.body.description, location:req.body.location, createdBy:req.body.createdBy})
+		sample.save(function(err){
+			if(err){
+				res.json({message: "Error", error: err})
+			}
+			else{
+				res.json({message: "Success"})
+			}
+		})
+	},
+	deleteSample: (req,res)=>{
+		Sample.remove({_id: req.params.id}, (err)=>{
+			if(err){
+				res.json({message: "Error", error: err})
+			}
+			else{
+				res.json({message: "Success"})
+			}
+		})
+	},
+	updateSample: (req,res)=>{
+		Sample.update({_id:req.params.id},{name: req.body.name, type: req.body.type, container: req.body.container, description: req.body.description, location:req.body.location, createdBy:req.body.createdBy}, {runValidators:true}, (err)=>{
+			if(err){
+				res.json({message: "Error", error: err})
+			}
+			else{
+				res.json({message: "Success"})
+			}
+		})
+	},
+	//<== end functions for samples
 }

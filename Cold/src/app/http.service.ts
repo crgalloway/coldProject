@@ -45,4 +45,21 @@ export class HttpService {
 		return this._http.delete('/storage/'+id)
 	}
 	//<==end storage services
+	//Sample-replated services ==>
+	createSample(newSample){
+		return this._http.post('/sample',newSample)
+	}
+	getSample(){
+		return this._http.get('/sample')
+	}
+	getSampleInfo(id){
+		return this._http.get('/sample/'+id)
+	}
+	updateSample(sample){
+		return this._http.put('/sample/'+sample._id, sample)
+	}
+	deleteSample(id){
+		return this._http.delete('/sample/'+id)
+	}
+	//<==end sample services
 }

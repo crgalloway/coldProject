@@ -48,6 +48,23 @@ module.exports = (app) => {
 		ctrl.updateStorage(req,res)
 	})
 	//<== end storage routes
+	//Sample routes ==>
+	app.get('/sample', (req,res)=>{
+		ctrl.getSample(req,res);
+	})
+	app.get('/sample/:id', (req,res)=>{
+		ctrl.getOneSample(req,res)
+	})
+	app.post('/sample', (req,res)=>{
+		ctrl.createSample(req,res)
+	})
+	app.delete('/sample/:id', (req,res)=>{
+		ctrl.deleteSample(req,res)
+	})
+	app.put('/sample/:id',(req,res)=>{
+		ctrl.updateSample(req,res)
+	})
+	//<== end sample routes
 	app.all("*", (req,res,next)=>{
 		res.sendFile(path.resolve("cold/dist/index.html"))
 	})

@@ -8,4 +8,7 @@ mongoose.model('Lab', LabSchema)
 
 const StorSchema = require('../models/storage')
 mongoose.model('Storage', StorSchema)
+
+const SampleSchema = require('../models/sample')
+mongoose.model('Sample', SampleSchema)
 //Other schemas follow this pattern
