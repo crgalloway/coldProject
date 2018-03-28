@@ -55,10 +55,16 @@ module.exports = (app) => {
 	app.put('/storage/:id',(req,res)=>{
 		ctrl.updateStorage(req,res)
 	})
+	app.put('/storage/sample/add/:id',(req,res)=>{
+		ctrl.addSampStor(req,res)
+	})
+	app.put('/storage/sample/remove/:id',(req,res)=>{
+		ctrl.removeSampStor(req,res)
+	})
 	//<== end storage routes
 	//Sample routes ==>
 	app.get('/sample', (req,res)=>{
-		ctrl.getSample(req,res);
+		ctrl.getSamples(req,res);
 	})
 	app.get('/sample/:id', (req,res)=>{
 		ctrl.getOneSample(req,res)

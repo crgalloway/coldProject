@@ -4,15 +4,15 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class HttpService {
 
-  constructor(private _http: HttpClient) { }
+	constructor(private _http: HttpClient) { }
 
-  adduser(data){
-    return this._http.post('/user', data);
-  }
+	adduser(data){
+		return this._http.post('/user', data);
+	}
 
-  login(body){
-    return this._http.put('/user', body);
-  }
+	login(body){
+		return this._http.put('/user', body);
+	}
 	//Lab-related services ==>
 	createLab(newLab){
 		return this._http.post('/labs',newLab)
@@ -52,12 +52,15 @@ export class HttpService {
 	deleteStorage(id){
 		return this._http.delete('/storage/'+id)
 	}
+	addSampleToStorage(storageID,sample){
+		return this._http.put('storage/sample/add/'+storageID, sample)
+	}
 	//<==end storage services
 	//Sample-replated services ==>
 	createSample(newSample){
 		return this._http.post('/sample',newSample)
 	}
-	getSample(){
+	getSamples(){
 		return this._http.get('/sample')
 	}
 	getSampleInfo(id){

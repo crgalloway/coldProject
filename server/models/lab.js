@@ -8,6 +8,7 @@ module.exports = new mongoose.Schema({
 	}],
 	resList: [{
 		_id:{type:String, required:true},
-		name:{type:String, required:true}
+		firstname:{type:String, required:true},
+		lastname:{type:String, required:true}
 	}],
 }, {timestamps:true})

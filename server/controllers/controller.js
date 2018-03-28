@@ -220,6 +220,48 @@ module.exports = {
 			}
 		})
 	},
+	addSampStor: (req,res)=>{
+		Storage.findOne({_id: req.params.id}, (err, storage)=>{
+			if(err){
+				res.json({message: "Error", error: err})
+			}
+			else{
+				storage.sampleList.push({_id:req.body._id,name:req.body.name})
+				storage.save(function(err){
+					if(err){
+						res.json({message: "Error", error: err})
+					}
+					else{
+						res.json({message: "Success"})
+					}
+				})
+			}
+		})
+	},
+	removeSampStor: (req,res)=>{
+		console.log(req.params.id)
+		Lab.findOne({_id: req.params.id}, (err, storage)=>{
+			if(err){
+				res.json({message: "Error", error: err})
+			}
+			else{
+				for(let i = 0; i < lab['sampleList'].length; i++){
+					if(storage.sampleList[i]._id == req.body._id){
+						storage.sampleList.splice(i,1)
+						storage.save(function(err){
+							if(err){
+								res.json({message: "Error", error: err})
+							}
+							else{
+								res.json({message: "Success"})
+							}
+						})
+					}
+					break;
+				}
+			}
+		})
+	},
 	//<== end functions for storage
 	//Functions for samples ==>
 	getSamples: (req,res)=>{
@@ -249,7 +291,7 @@ module.exports = {
 				res.json({message: "Error", error: err})
 			}
 			else{
-				res.json({message: "Success"})
+				res.json({message: "Success", data:sample})
 			}
 		})
 	},
