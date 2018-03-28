@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NewuserComponent } from './newuser/newuser.component';
+import { LoginComponent } from './login/login.component';
 import { LabnewComponent } from './labnew/labnew.component';
 import { LabeditComponent } from './labedit/labedit.component';
 import { LabviewComponent } from './labview/labview.component';
@@ -14,7 +16,9 @@ import { SampviewComponent } from './sampview/sampview.component';
 import { SampeditComponent } from './sampedit/sampedit.component';
 
 const routes: Routes = [
-	{path:'labnew', component:LabnewComponent},
+  {path: 'newuser', component: NewuserComponent},
+  {path: 'login', component: LoginComponent},
+  {path:'labnew', component:LabnewComponent},
 	{path:'labdetails/:id', component:LabdetailsComponent},
 	{path:'labedit/:id', component:LabeditComponent},
 	{path:'labview', component:LabviewComponent},
@@ -26,7 +30,7 @@ const routes: Routes = [
 	{path:'sampdetails/:id', component:SampdetailsComponent},
 	{path:'sampedit/:id', component:SampeditComponent},
 	{path:'sampview', component:SampviewComponent},
-	{ path: '**', redirectTo: 'labview', pathMatch: 'full' }
+  {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({

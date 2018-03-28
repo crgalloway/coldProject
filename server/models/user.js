@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 module.exports = new mongoose.Schema({
-	// name:
-	// lab:
-	// etc
-})
+	firstname: {type: String, required: true, minlength: 3},
+    lastname: {type: String, required: true, minlength: 3},
+	username: {type: String, required: true, minlength: 3},
+	email: {type: String, required: true, unique: true, minlength: 3},
+	password: {type: String, required: true, minlength: 6}},
+    {timestamps: true}
+);

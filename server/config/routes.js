@@ -2,6 +2,14 @@ const ctrl = require('../controllers/controller')
 const path = require('path');
 
 module.exports = (app) => {
+
+	app.post('/user', (req, res)=>{
+		ctrl.adduser(req, res);
+	})
+
+	app.put('/user', (req, res)=>{
+		ctrl.login(req, res);
+	})
 	//Lab routes ==>
 	app.get('/labs', (req,res)=>{
 		ctrl.getLabs(req,res);
@@ -65,7 +73,7 @@ module.exports = (app) => {
 		ctrl.updateSample(req,res)
 	})
 	//<== end sample routes
-	app.all("*", (req,res,next)=>{
-		res.sendFile(path.resolve("cold/dist/index.html"))
+	app.all('*', (req, res, next)=> {
+		res.sendFile(path.resolve('./Cold/dist/index.html'));
 	})
 }
