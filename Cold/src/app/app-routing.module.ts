@@ -14,6 +14,7 @@ import { SampnewComponent } from './sampnew/sampnew.component';
 import { SampdetailsComponent } from './sampdetails/sampdetails.component';
 import { SampviewComponent } from './sampview/sampview.component';
 import { SampeditComponent } from './sampedit/sampedit.component';
+import { MainComponent} from './main/main.component';
 
 const routes: Routes = [
   {path: 'main', component: MainComponent},
