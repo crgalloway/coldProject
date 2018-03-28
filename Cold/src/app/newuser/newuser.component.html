@@ -6,6 +6,9 @@
           <tr>
             <td><label>First Name: </label></td>
             <td><input type="text" name="firstname" [(ngModel)]="newuser.firstname"></td>
+          </tr>
+          <tr>
+            <td></td>
             <td><p class="error" *ngIf="errors['first']">{{ errors.first }}</p></td>
           </tr>
             <td><label>Last Name: </label></td>
