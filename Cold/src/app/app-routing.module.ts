@@ -16,6 +16,7 @@ import { SampviewComponent } from './sampview/sampview.component';
 import { SampeditComponent } from './sampedit/sampedit.component';
 
 const routes: Routes = [
+  {path: 'main', component: MainComponent},
   {path: 'newuser', component: NewuserComponent},
   {path: 'login', component: LoginComponent},
   {path:'labnew', component:LabnewComponent},
@@ -29,7 +30,7 @@ const routes: Routes = [
 	{path:'sampnew', component:SampnewComponent},
 	{path:'sampdetails/:id', component:SampdetailsComponent},
 	{path:'sampedit/:id', component:SampeditComponent},
-	{path:'sampview', component:SampviewComponent},
+	{path:'sampview', component:SampviewComponent},  
   {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];
 

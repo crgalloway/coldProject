@@ -19,6 +19,7 @@ import { SampviewComponent } from './sampview/sampview.component';
 import { SampeditComponent } from './sampedit/sampedit.component';
 import { NewuserComponent } from './newuser/newuser.component';
 import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +37,13 @@ import { LoginComponent } from './login/login.component';
     SampnewComponent,
     SampdetailsComponent,
     SampviewComponent,
-    SampeditComponent
+    SampeditComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
     FormsModule
   ],
   providers: [HttpService],
