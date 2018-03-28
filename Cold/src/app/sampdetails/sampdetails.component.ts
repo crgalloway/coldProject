@@ -40,4 +40,18 @@ export class SampdetailsComponent implements OnInit {
 			this.sample=data['data']
 		})
 	}
+	deleteSample(){
+		this._httpService.removeSampleFromStorage(this.sample).subscribe(data=>{
+			if(!data['error']){
+				this._httpService.deleteSample(this.sample._id).subscribe(data=>{
+					if(!data['error']){
+						this.goSampView()
+					}
+				})
+			}
+		})
+	}
+	goSampView(){
+		this._router.navigate(['sampview'])
+	}
 }

@@ -49,8 +49,5 @@ export class StornewComponent implements OnInit {
 			console.log(data)
 		})
 	}
-	test(){
-		console.log("this works!")
-	}
 }
 	

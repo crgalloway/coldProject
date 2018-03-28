@@ -54,14 +54,13 @@ export class SampnewComponent implements OnInit {
 	onSubmit(){
 		this._httpService.createSample(this.newSample).subscribe(data=>{
 			if(!data['error']){
-				console.log(data['data'])
+				console.log(this.newSample)
 				this.addSampleToStorage(this.newSample.location.storage._id, data['data'])
 				this.goSampView()
 			}
 		})
 	}
 	addSampleToStorage(storageID, sample){
-		console.log("I got here")
 		this._httpService.addSampleToStorage(storageID, sample).subscribe(data=>{
 		})
 	}
