@@ -84,10 +84,7 @@ module.exports = {
 				res.json({message: "Error", error: err})
 			}
 			else{
-				console.log(req.body._id)
-				console.log(lab)
 				for(let i = 0; i < lab['storageList'].length; i++){
-					console.log(req.body._id)
 					if(lab.storageList[i]._id == req.body._id){
 						lab.storageList.splice(i,1)
 						lab.save(function(err){

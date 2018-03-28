@@ -1,7 +1,4 @@
-<p>
-  storedit works!
-</p>
-<h1>Edit Storage</h1>
+<h2>Edit Storage</h2>
 <form (submit)="onSubmit()">
 	<table>
 		<tr>
@@ -18,7 +15,7 @@
 		</tr>
 		<tr>
 			<td>Current Location:</td>
-			<td>{{storage.location.name}}</td>
+			<td>{{currentLab.name}}</td>
 		</tr>
 		<tr>
 			<td>Location:</td>
@@ -28,7 +25,7 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="submit" value="Update Lab"></td>
+			<td><input type="submit" value="Update Storage"></td>
 		</tr>
 	</table>
 </form>

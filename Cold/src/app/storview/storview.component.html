@@ -1,6 +1,6 @@
-<p>
-  storview works!
-</p>
+<h2>All Storage Units</h2>
+<a [routerLink]="['/labview']">View Labs</a>
+<a [routerLink]="['/stornew']">New Storage Unit</a>
 <ul *ngFor='let each of allStorage'>
 	<li><a [routerLink]="['/stordetails/'+each._id]">{{ each.name }}</a>
 		<ul>

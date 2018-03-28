@@ -10,7 +10,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class StoreditComponent implements OnInit {
 	storage:any
 	allLabs:any
-	currentLabID:string
+	currentLab:any
 	constructor(
 		private _httpService: HttpService,
 		private _route: ActivatedRoute,
@@ -35,7 +35,7 @@ export class StoreditComponent implements OnInit {
 	getStorageInfo(id){
 		this._httpService.getStorageInfo(id).subscribe(data =>{
 			this.storage = data['data']
-			this.currentLabID = this.storage.location._id
+			this.currentLab = data['data']['location']
 		})
 	}
 	goStorageView(){
@@ -58,7 +58,7 @@ export class StoreditComponent implements OnInit {
 		})
 	}
 	removeStorageFromLab(){
-		this._httpService.removeStorageFromLab(this.currentLabID,this.storage).subscribe(data=>{
+		this._httpService.removeStorageFromLab(this.currentLab._id,this.storage).subscribe(data=>{
 		})
 	}
 	addStorageToLab(storage){

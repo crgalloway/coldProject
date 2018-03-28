@@ -13,6 +13,10 @@ import { StorviewComponent } from './storview/storview.component';
 import { StoreditComponent } from './storedit/storedit.component';
 import { LabdetailsComponent } from './labdetails/labdetails.component';
 import { StordetailsComponent } from './stordetails/stordetails.component';
+import { SampnewComponent } from './sampnew/sampnew.component';
+import { SampdetailsComponent } from './sampdetails/sampdetails.component';
+import { SampviewComponent } from './sampview/sampview.component';
+import { SampeditComponent } from './sampedit/sampedit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { StordetailsComponent } from './stordetails/stordetails.component';
     StorviewComponent,
     StoreditComponent,
     LabdetailsComponent,
-    StordetailsComponent
+    StordetailsComponent,
+    SampnewComponent,
+    SampdetailsComponent,
+    SampviewComponent,
+    SampeditComponent
   ],
   imports: [
     BrowserModule,
