@@ -89,7 +89,9 @@ export class NewuserComponent implements OnInit {
           }
         }
         else{
-          this.addUserToLab(data['data'])
+          if(data['data']['lab']['name']!=''){
+            this.addUserToLab(data['data'])
+          }
           this._router.navigate(['/login']);
         }
       })
