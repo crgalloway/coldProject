@@ -1,0 +1,9 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/* #wrapper{
+    background-image: url(/assets/images/home.png);
+} */

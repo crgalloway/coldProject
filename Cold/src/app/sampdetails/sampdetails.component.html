@@ -1,0 +1,10 @@
+<h2>Details about {{sample.name}}:</h2>
+<h3>BioSafety Level: {{sample.type}}</h3>
+<h4>Container: {{sample.container}}</h4>
+<p>Description: {{sample.description}}</p>
+<p>Location:</p>
+<ul>
+	<li>Lab: {{sample.location.lab.name}}</li>
+	<li>Storage Unit:{{sample.location.storage.name}}</li>
+</ul>
+<button (click)=editLab(sample._id)>Edit</button><br><button (click)=deleteLab(sample._id)>Delete</button>
