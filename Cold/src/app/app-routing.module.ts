@@ -18,9 +18,9 @@ import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
 	{path: 'login', component: LoginComponent},
-  {path: 'main', component: MainComponent, children:[
-  	{path: 'newuser', component: NewuserComponent},
-  	{path:'labnew', component:LabnewComponent},
+	{path: 'main', component: MainComponent, children:[
+		{path: 'newuser', component: NewuserComponent},
+		{path:'labnew', component:LabnewComponent},
 		{path:'labdetails/:id', component:LabdetailsComponent},
 		{path:'labedit/:id', component:LabeditComponent},
 		{path:'labview', component:LabviewComponent},

@@ -1,5 +1,5 @@
 <h2>New Storage</h2>
-<a [routerLink]="['/storview']">Go back</a>
+<a [routerLink]="['/main/storview']">Go back</a>
 <form (submit)="onSubmit()">
 	<table>
 		<tr>
@@ -17,7 +17,7 @@
 		<tr>
 			<td>Lab Located:</td>
 			<td><select name="location" [(ngModel)]="newStorage.location" (change)="test()">
-				<option *ngFor="let each of allLabs" [ngValue]="each" (click)="test()">{{each.name}}</option>
+				<option *ngFor="let each of allLabs" [ngValue]="each">{{each.name}}</option>
 			</select></td>
 		</tr>
 		<tr>
