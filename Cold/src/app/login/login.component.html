@@ -1,5 +1,6 @@
+<div id="main-wrapper">
 <div class="main">
-  <h1>Login</h1>
+  <img class="logo" src="../assets/images/cold_logo2.png" alt="Cold Logo">
   <form class="loginForm" (submit)="loginuser()">
     <table>
       <tbody>
@@ -8,18 +9,19 @@
           <td class="error">{{ errors }}</td>
         </tr>
         <tr>
-          <td><label>Email: </label></td>
-          <td><input type="text" name="email" [(ngModel)]="login.email"></td>
+          <td><label></label></td>
+          <td><input placeholder="Email" class="form-control"  type="text" name="email" [(ngModel)]="login.email"></td>
         </tr>
         <tr>
-          <td><label>Password: </label></td>
-          <td><input type="password" name="password" [(ngModel)]="login.password"></td>
+          <td><label></label></td>
+          <td><input placeholder="Password" class="form-control" type="text" name="password" [(ngModel)]="login.password"></td>
         </tr>
         <tr>
           <td></td>
-          <td><button class="formbutton" type="submit">Submit</button></td>
+          <td><button class="btn btn-primary" type="button">Submit</button></td>
         </tr>
       </tbody>
     </table>
   </form>
+</div>
 </div>

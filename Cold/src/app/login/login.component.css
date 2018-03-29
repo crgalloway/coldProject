@@ -1,20 +1,36 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
 .loginForm{
-    border: 2px solid black; 
-    padding: 10px; 
+    font-size: 1.5rem;
+    padding-top: 10%;
 }
-
+.form-control{
+    width: 20rem;
+}
 .main{
-    width: 500px; 
+    width: 20%;
+    margin: 0 auto;
 }
-
-.formbutton{
-    padding: 10px; 
-    color: white; 
-    background-color: steelblue;
-    border: none; 
-    border-radius: 8px; 
-}
-
 .error{
     color: red; 
+}
+.logo{
+    margin-left: -25%;
+    padding-top: 70%;
+    width: 120%;
+}
+#main-wrapper{
+    height: stretch;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url("assets\images\home.png");
+    object-fit: cover;
+}
+button{
+    float: right;
+    width: 10rem;
+    margin-top: 0.5rem;
 }
