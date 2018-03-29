@@ -72,6 +72,42 @@ module.exports = {
 			}
 		})
 	},
+	getallusers: (req, res) =>{
+		User.find({}, null, {sort: {firstname: 1}}, (err, all)=>{
+			if(err){console.log(err)}
+			else{
+				res.json(all);
+			}
+		})
+	},
+	getoneuser: (req, res) => {
+		User.findOne({_id: req.params.id}, (err, user)=>{
+			if(err){
+				console.log(err)
+			}
+			else{
+				res.json(user);
+			}
+		})
+	},
+	deleteuser: (req, res)=>{
+		User.remove({_id: req.params.id}, (err) =>{
+			if(err){console.log(err)}
+			else{
+				res.json({success: 'removed'});
+			}
+		})
+	},
+	updateuser: (req, res) =>{
+		User.update({_id: req.params.id}, req.body, {runValidators: true}, (err, data)=>{
+			if(err){
+				res.json(err)
+			}
+			else{
+				res.json({success: 'updated'})
+			}
+		})
+	},
   //functions for labs ==>
 	getLabs: (req,res)=>{
 		Lab.find({}, (err, labs)=>{
