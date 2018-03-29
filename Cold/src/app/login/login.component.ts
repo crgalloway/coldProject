@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         this.errorcheck = true; 
       }
       else{
-        this._router.navigate(['/newuser']);
+        this._router.navigate(['/main']);
       }
     })
   }
