@@ -8,7 +8,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 	styleUrls: ['./storview.component.css']
 })
 export class StorviewComponent implements OnInit {
-	allStorage
+	allStorage:any
 	constructor(
 		private _httpService: HttpService,
 		private _route: ActivatedRoute,

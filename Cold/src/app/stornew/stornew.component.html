@@ -16,8 +16,8 @@
 		</tr>
 		<tr>
 			<td>Lab Located:</td>
-			<td><select name="location" [(ngModel)]="newStorage.location">
-				<option *ngFor="let each of allLabs" [ngValue]="each">{{each.name}}</option>
+			<td><select name="location" [(ngModel)]="newStorage.location" (change)="test()">
+				<option *ngFor="let each of allLabs" [ngValue]="each" (click)="test()">{{each.name}}</option>
 			</select></td>
 		</tr>
 		<tr>
