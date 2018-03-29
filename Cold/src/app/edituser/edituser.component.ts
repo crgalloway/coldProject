@@ -23,6 +23,7 @@ export class EdituserComponent implements OnInit {
     this._route.params.subscribe((params: Params)=>{
       this.id = params['id']
     })
+    this.currentLab = ''
     this.getUser(this.id)
     this.updateUser = {firstname: '', lastname: '', username: '', email: '',lab:{_id:'', name:''}, password: '', confirm: ''}
     this.errors = {first: '', last: '', username: '', email: '', password: '', confirm: ''}
@@ -85,6 +86,9 @@ export class EdituserComponent implements OnInit {
             else if(data['errors']['username']['kind']=='minlength'){
               this.errors = {first: '', last: '', username: 'Username Must Be Greater Than 3 Characters!', email: '', password: '', confirm: ''}
             }
+            else if(data['errors']['username']['kind']=='unique'){
+              this.errors = {first: '', last: '', username: 'Username is already taken', email: '', password: '', confirm: ''}
+            }
           }
           else if(data['errors']['password']){
             if(data['errors']['password']['kind']== 'required'){
@@ -101,11 +105,9 @@ export class EdituserComponent implements OnInit {
             else if(data['errors']['email']['kind']=='minlength'){
               this.errors = {first: '', last: '', username: '', email: 'Invalid Email', password: '', confirm: ''}
             }
-          }
-        }
-        else if(data['code']){
-          if(data['code']== '11000'){
-            this.errors = {first: '', last: '', username: '', email: 'Email already exists!', password: '', confirm: ''}
+            else if(data['errors']['email']['kind']=='unique'){
+              this.errors = {first: '', last: '', username: '', email: 'Email already exists', password: '', confirm: ''}
+            }
           }
         }
         else{
