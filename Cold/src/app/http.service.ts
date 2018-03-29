@@ -13,6 +13,19 @@ export class HttpService {
   login(body){
     return this._http.put('/user', body);
   }
+
+  getAll(){
+    return this._http.get('/user');
+  }
+  getUser(id){
+    return this._http.get('/user/'+id);
+  }
+  deleteuser(id){
+    return this._http.delete('/user/'+id);
+  }
+  updateuser(id, body){
+    return this._http.put('/user/'+id, body);
+  }
 	//Lab-related services ==>
 	createLab(newLab){
 		return this._http.post('/labs',newLab)

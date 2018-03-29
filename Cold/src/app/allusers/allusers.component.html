@@ -1,0 +1,6 @@
+<div>
+  <h1>All Users</h1>
+  <ol>
+    <li *ngFor='let each of AllUsers'>{{ each.firstname }} {{ each.lastname }} &nbsp;&nbsp; <a [routerLink]="['/viewuser/'+each._id]">View</a></li>
+  </ol>
+</div>

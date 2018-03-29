@@ -20,6 +20,9 @@ import { SampeditComponent } from './sampedit/sampedit.component';
 import { NewuserComponent } from './newuser/newuser.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { AllusersComponent } from './allusers/allusers.component';
+import { ViewuserComponent } from './viewuser/viewuser.component';
+import { EdituserComponent } from './edituser/edituser.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { MainComponent } from './main/main.component';
     SampdetailsComponent,
     SampviewComponent,
     SampeditComponent,
-    MainComponent
+    MainComponent,
+    AllusersComponent,
+    ViewuserComponent,
+    EdituserComponent
   ],
   imports: [
     BrowserModule,

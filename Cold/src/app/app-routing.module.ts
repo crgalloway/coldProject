@@ -15,8 +15,14 @@ import { SampdetailsComponent } from './sampdetails/sampdetails.component';
 import { SampviewComponent } from './sampview/sampview.component';
 import { SampeditComponent } from './sampedit/sampedit.component';
 import { MainComponent} from './main/main.component';
+import { ViewuserComponent } from './viewuser/viewuser.component';
+import { AllusersComponent } from './allusers/allusers.component';
+import { EdituserComponent } from './edituser/edituser.component';
 
 const routes: Routes = [
+	{path: 'viewuser/:id', component: ViewuserComponent},
+	{path: 'allusers', component: AllusersComponent},
+	{path: 'edituser/:id', component: EdituserComponent},
   {path: 'main', component: MainComponent},
   {path: 'newuser', component: NewuserComponent},
   {path: 'login', component: LoginComponent},

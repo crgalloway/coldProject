@@ -1,0 +1,9 @@
+<div>
+  <a [routerLink]="['/allusers']">Back</a>
+  <h3>{{ User.firstname }} {{ User.lastname }}</h3>
+  <p>{{  User.username }}</p>
+  <p>{{  User.email }}</p>
+  <p>lab number</p>
+  <button (click)='deleteuser(User._id)'>Delete User</button> &nbsp; 
+  <button (click)='edituser(User._id)'>Edit User</button>
+</div>

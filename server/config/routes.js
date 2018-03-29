@@ -10,6 +10,18 @@ module.exports = (app) => {
 	app.put('/user', (req, res)=>{
 		ctrl.login(req, res);
 	})
+	app.get('/user', (req, res)=>{
+		ctrl.getallusers(req, res);
+	})
+	app.get('/user/:id', (req, res)=>{
+		ctrl.getoneuser(req, res);
+	})
+	app.delete('/user/:id', (req, res)=>{
+		ctrl.deleteuser(req, res);
+	})
+	app.put('/user/:id', (req, res)=>{
+		ctrl.updateuser(req, res);
+	})
 	//Lab routes ==>
 	app.get('/labs', (req,res)=>{
 		ctrl.getLabs(req,res);
