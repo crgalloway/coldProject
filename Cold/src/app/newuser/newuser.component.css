@@ -1,6 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 .loginForm{
-
     padding: 10px; 
 }
 
@@ -11,7 +10,6 @@
     vertical-align: top;
     width: 500px; 
 }
-
 
 .error{
     color: red; 

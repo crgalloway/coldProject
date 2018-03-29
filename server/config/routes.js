@@ -66,6 +66,14 @@ module.exports = (app) => {
 	app.get('/sample', (req,res)=>{
 		ctrl.getSamples(req,res);
 	})
+
+	app.get('/sampleFindByType/:labsname/:query', (req, res)=>{
+		ctrl.findSamplesByType(req,res);
+	});
+	app.get('/sampleFindByName/:labsname/:query', (req, res)=>{
+		ctrl.findSamplesByName(req,res);
+	});
+
 	app.get('/sample/:id', (req,res)=>{
 		ctrl.getOneSample(req,res)
 	})
@@ -79,6 +87,10 @@ module.exports = (app) => {
 		ctrl.updateSample(req,res)
 	})
 	//<== end sample routes
+	app.get('/cdcrss', (req,res)=>{
+		ctrl.cdcRss(req,res);
+	})
+
 	app.all('*', (req, res, next)=> {
 		res.sendFile(path.resolve('./Cold/dist/index.html'));
 	})

@@ -6,6 +6,9 @@ export class HttpService {
 
 	constructor(private _http: HttpClient) { }
 
+	getCdcFeed(){
+		return this._http.get('/cdcrss');
+	  }
 	adduser(data){
 		return this._http.post('/user', data);
 	}
@@ -75,5 +78,13 @@ export class HttpService {
 	deleteSample(id){
 		return this._http.delete('/sample/'+id)
 	}
+	findSampleByName(query, labsName){
+		return this._http.get('/sampleFindByName/' + labsName + "/" + query );
+	}
+	findSampleByType(query, labsName){
+		return this._http.get('/sampleFindByType/' + labsName + "/" + query );
+	}
+
+
 	//<==end sample services
 }
