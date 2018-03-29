@@ -56,7 +56,7 @@ module.exports = {
 	},
 
 	login: (req, res) => {
-		User.findOne({email: req.body.email}, (err, user)=>{
+		User.findOne({username: req.body.username}, (err, user)=>{
 			if(err){console.log(err)}
 			if(user){
 				if(user.password == req.body.password){
