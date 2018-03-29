@@ -6,19 +6,19 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div id="sidebar" class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" [routerLink]="['/main/']"></a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#"><img src="../assets/images/icons/acct_ic.png" alt="account">Settings<span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['/main/']"><img src="../assets/images/icons/acct_ic.png" alt="account">Settings<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#"><img src="../assets/images/icons/freezer_ic.png" alt="freezer">Freezer</a>
+        <a class="nav-link" [routerLink]="['/main/storview']"><img src="../assets/images/icons/freezer_ic.png" alt="freezer">Freezers</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#"><img src="../assets/images/icons/home_ic.png" alt="home">Home</a>
+        <a class="nav-link" [routerLink]="['/main/']"><img src="../assets/images/icons/home_ic.png" alt="home">Home</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/main/newuser"><img src="../assets/images/icons/reg_ic.png" alt="register">New User</a>
+        <a class="nav-link" [routerLink]="['/main/newuser']"><img src="../assets/images/icons/reg_ic.png" alt="register">New User</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -30,13 +30,13 @@
 </div>
 <div id="sidebar">
 <nav class="nav flex-column">
-  <a class="nav-link active" href="#">Freezer</a>
-  <a class="nav-link" href="#">Create Sample</a>
-  <a class="nav-link" href="#">Edit Sample</a>
-  <a class="nav-link" href="#">Lab</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link" [routerLink]="['/main/labview']">View All Labs</a>
+  <a class="nav-link" [routerLink]="['/main/storview']">View All Freezers</a>
+  <a class="nav-link" [routerLink]="['/main/sampview']">View All Samples</a>
+  <a class="nav-link" [routerLink]="['/main/allusers']">View All Users</a>
+  <a class="nav-link" [routerLink]="['/main/labnew']">Create Lab</a>
+  <a class="nav-link active" [routerLink]="['/main/stornew']">Create Freezer</a>
+  <a class="nav-link" [routerLink]="['/main/sampnew']">Create Sample</a>
 </nav>
 </div>
 <router-outlet></router-outlet>
