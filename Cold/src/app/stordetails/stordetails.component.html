@@ -1,3 +1,4 @@
+<div class="main">
 <h2>Details about {{storage.name}}:</h2>
 <h3>Location: <a [routerLink]="['/main/labdetails/'+storage.location._id]">{{ storage.location.name }}</a></h3>
 <h5>Type: {{ storage.type }}</h5>
@@ -20,3 +21,4 @@
 	</li>
 </ul>
 <button (click)=editStorage(storage._id)>Edit</button><br><button (click)=deleteStorage(storage._id)>Delete</button>
+</div>

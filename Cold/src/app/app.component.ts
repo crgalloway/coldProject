@@ -9,11 +9,14 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
   feed: any;
   feedExist: Boolean;
+  innerWidth:any;
   constructor(private _httpService: HttpService){};
 
   ngOnInit(){
     this.feedExist=false;
     this.feed=[];
+    this.innerWidth=window.innerWidth
+    console.log(this.innerWidth)
   }
 
   getCdcFeed(){

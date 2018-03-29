@@ -1,3 +1,4 @@
+<div class="main">
 <h2>All Samples</h2>
 <ul *ngFor='let each of allSamples'>
 	<li><a [routerLink]="['/main/sampdetails/'+each._id]">{{ each.name }}</a>
@@ -7,3 +8,4 @@
 		</ul>
 	</li>
 </ul>
+</div>

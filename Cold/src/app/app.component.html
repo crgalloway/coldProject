@@ -1,7 +1,7 @@
 <button (click)="getCdcFeed()">Get feed</button>
 
 <div class="tickerContainer myStyles" *ngIf="feedExist">
-    <div ticker [text]=feed [speed]="15" [padding-left]="800" [size]="20"></div>
+    <div ticker [text]=feed [speed]="15" [padding-left]="innerWidth" [size]="20"></div>
 </div>
 <div id="ghost"></div>
 
