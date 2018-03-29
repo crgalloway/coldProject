@@ -28,7 +28,7 @@ module.exports = {
 					res.json({success: 'logged'})
 				}
 				else{
-					res.json({error: 'Password does not match!'})
+					res.json({error: 'Invalid Password!'})
 				}
 
 			}

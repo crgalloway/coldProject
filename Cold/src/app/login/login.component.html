@@ -3,13 +3,17 @@
   <form class="loginForm" (submit)="loginuser()">
     <table>
       <tbody>
+        <tr *ngIf="errorcheck">
+          <td></td>
+          <td class="error">{{ errors }}</td>
+        </tr>
         <tr>
           <td><label>Email: </label></td>
           <td><input type="text" name="email" [(ngModel)]="login.email"></td>
         </tr>
         <tr>
           <td><label>Password: </label></td>
-          <td><input type="text" name="password" [(ngModel)]="login.password"></td>
+          <td><input type="password" name="password" [(ngModel)]="login.password"></td>
         </tr>
         <tr>
           <td></td>

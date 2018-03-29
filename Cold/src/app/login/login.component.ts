@@ -10,6 +10,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   login: any; 
   errors: any; 
+  errorcheck: boolean; 
   constructor(
     private _http: HttpService,
     private _route: ActivatedRoute, 
@@ -19,13 +20,21 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.login = {email: '', password: ''};
     this.errors = ''
+    this.errorcheck = false; 
   }
 
   loginuser(){
     var status = this._http.login(this.login);
     status.subscribe(data => {
-      console.log(data);
+      if(data['error']){
+        this.errors = data['error']
+        this.errorcheck = true; 
+      }
+      else{
+        this._router.navigate(['/newuser']);
+      }
     })
   }
+
 
 }
