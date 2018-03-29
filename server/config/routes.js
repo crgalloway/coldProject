@@ -44,11 +44,11 @@ module.exports = (app) => {
 	app.put('/labs/storage/remove/:id',(req,res)=>{
 		ctrl.removeStorLab(req,res)
 	})
-	app.put('/labs/researcher/add/:id',(req,res)=>{
-		ctrl.addResLab(req,res)
+	app.put('/labs/user/add/:id',(req,res)=>{
+		ctrl.addUserLab(req,res)
 	})
-	app.put('/labs/researcher/remove/:id',(req,res)=>{
-		ctrl.removeResLab(req,res)
+	app.put('/labs/user/remove/:id',(req,res)=>{
+		ctrl.removeUserLab(req,res)
 	})
 	//<== end lab routes
 	//Storage routes ==>
@@ -67,11 +67,25 @@ module.exports = (app) => {
 	app.put('/storage/:id',(req,res)=>{
 		ctrl.updateStorage(req,res)
 	})
+	app.put('/storage/sample/add/:id',(req,res)=>{
+		ctrl.addSampStor(req,res)
+	})
+	app.put('/storage/sample/remove/:id',(req,res)=>{
+		ctrl.removeSampStor(req,res)
+	})
 	//<== end storage routes
 	//Sample routes ==>
 	app.get('/sample', (req,res)=>{
-		ctrl.getSample(req,res);
+		ctrl.getSamples(req,res);
 	})
+
+	app.get('/sampleFindByType/:labsname/:query', (req, res)=>{
+		ctrl.findSamplesByType(req,res);
+	});
+	app.get('/sampleFindByName/:labsname/:query', (req, res)=>{
+		ctrl.findSamplesByName(req,res);
+	});
+
 	app.get('/sample/:id', (req,res)=>{
 		ctrl.getOneSample(req,res)
 	})
@@ -85,6 +99,10 @@ module.exports = (app) => {
 		ctrl.updateSample(req,res)
 	})
 	//<== end sample routes
+	app.get('/cdcrss', (req,res)=>{
+		ctrl.cdcRss(req,res);
+	})
+
 	app.all('*', (req, res, next)=> {
 		res.sendFile(path.resolve('./Cold/dist/index.html'));
 	})

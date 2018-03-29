@@ -4,12 +4,14 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class HttpService {
 
-  constructor(private _http: HttpClient) { }
+	constructor(private _http: HttpClient) { }
 
-  adduser(data){
-    return this._http.post('/user', data);
-  }
-
+	getCdcFeed(){
+		return this._http.get('/cdcrss');
+	  }
+	adduser(data){
+		return this._http.post('/user', data);
+	}
   login(body){
     return this._http.put('/user', body);
   }
@@ -48,6 +50,12 @@ export class HttpService {
 	removeStorageFromLab(labID, storage){
 		return this._http.put('/labs/storage/remove/'+labID, storage)
 	}
+	addUserToLab(user){
+		return this._http.put('/labs/user/add/'+user.lab._id,user)
+	}
+	removeUserFromLab(labID, user){
+		return this._http.put('/labs/user/remove/'+labID, user)
+	}
 	//<==end lab services
 	//Storage-related services ==>
 	createStorage(newStorage){
@@ -65,12 +73,18 @@ export class HttpService {
 	deleteStorage(id){
 		return this._http.delete('/storage/'+id)
 	}
+	addSampleToStorage(storageID,sample){
+		return this._http.put('storage/sample/add/'+storageID, sample)
+	}
+	removeSampleFromStorage(storageID, sample){
+		return this._http.put('storage/sample/remove/'+storageID, sample)
+	}
 	//<==end storage services
 	//Sample-replated services ==>
 	createSample(newSample){
 		return this._http.post('/sample',newSample)
 	}
-	getSample(){
+	getSamples(){
 		return this._http.get('/sample')
 	}
 	getSampleInfo(id){
@@ -82,5 +96,13 @@ export class HttpService {
 	deleteSample(id){
 		return this._http.delete('/sample/'+id)
 	}
+	findSampleByName(query, labsName){
+		return this._http.get('/sampleFindByName/' + labsName + "/" + query );
+	}
+	findSampleByType(query, labsName){
+		return this._http.get('/sampleFindByType/' + labsName + "/" + query );
+	}
+
+
 	//<==end sample services
 }

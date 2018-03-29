@@ -1,18 +1,14 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
 .loginForm{
-    border: 2px solid black; 
     padding: 10px; 
 }
 
 .main{
+    margin-top: 5%;
+    margin-left: 10%;
+    display: inline-block;
+    vertical-align: top;
     width: 500px; 
-}
-
-.formbutton{
-    padding: 10px; 
-    color: white; 
-    background-color: steelblue;
-    border: none; 
-    border-radius: 8px; 
 }
 
 .error{

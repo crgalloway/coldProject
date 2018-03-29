@@ -27,7 +27,7 @@ export class StornewComponent implements OnInit {
 		this.getLabs()
 	}
 	goStorageView(){
-		this._router.navigate(['storview'])
+		this._router.navigate(['main/storview'])
 	}
 	onSubmit(){
 		this._httpService.createStorage(this.newStorage).subscribe(data=>{

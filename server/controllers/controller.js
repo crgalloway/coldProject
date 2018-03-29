@@ -4,10 +4,45 @@ const User = mongoose.model('User')
 const Lab = mongoose.model('Lab')
 const Storage = mongoose.model('Storage')
 const Sample = mongoose.model('Sample')
+var Feed = require('rss-to-json');
 //
 mongoose.connect('mongodb://localhost/cold')
 
 module.exports = {
+
+	findSamplesByName(req,res){
+		Sample.find({name: new RegExp('^'+req.params.query), 'location.lab.name': req.params.labsname}, (err, samples)=>{
+			if(!err){
+				res.json({message: "Success", data: samples})
+			}
+			else{
+				res.json({message: "Error", error: err})
+			}
+		})
+	},
+
+	findSamplesByType(req,res){
+		Sample.find({type: new RegExp('^'+req.params.query), 'location.lab.name': req.params.labsname}, (err, samples)=>{
+			if(!err){
+				res.json({message: "Success", data: samples})
+			}
+			else{
+				res.json({message: "Error", error: err})
+			}
+		})
+	},
+
+	cdcRss(req,res){
+		Feed.load('https://t.cdc.gov/feed.aspx?format=rss2', (err, rss)=>{
+      		if (err){
+      		  res.json({ message: "Error", error: err });
+      		}
+      		else {
+      		  res.json({ message: "Success. Rss feed has been loaded.", rss: rss });
+      		}
+    	});
+	},
+
 	adduser: (req, res) => {
 		var newUser = new User(req.body);
 		newUser.save((err)=> {
@@ -15,7 +50,7 @@ module.exports = {
 				res.json(err);
 			}
 			else{
-				res.json({success: 'added'})
+				res.json({success: 'added', data:newUser})
 			}
 		});
 	},
@@ -144,7 +179,6 @@ module.exports = {
 		})
 	},
 	removeStorLab: (req,res)=>{
-		console.log(req.params.id)
 		Lab.findOne({_id: req.params.id}, (err, lab)=>{
 			if(err){
 				res.json({message: "Error", error: err})
@@ -162,18 +196,17 @@ module.exports = {
 							}
 						})
 					}
-					break;
 				}
 			}
 		})
 	},
-	addResLab: (req,res)=>{
+	addUserLab: (req,res)=>{
 		Lab.findOne({_id: req.params.id}, (err, lab)=>{
 			if(err){
 				res.json({message: "Error", error: err})
 			}
 			else{
-				lab.resList.push({storageId:req.body.resId,storageName:req.body.resName})
+				lab.userList.push({_id:req.body._id,firstname:req.body.firstname,lastname:req.body.lastname})
 				lab.save(function(err){
 					if(err){
 						res.json({message: "Error", error: err})
@@ -185,7 +218,7 @@ module.exports = {
 			}
 		})
 	},
-	removeResLab: (req,res)=>{
+	removeUserLab: (req,res)=>{
 		Lab.findOne({_id: req.params.id}, (err, lab)=>{
 			if(err){
 				res.json({message: "Error", error: err})
@@ -256,6 +289,46 @@ module.exports = {
 			}
 		})
 	},
+	addSampStor: (req,res)=>{
+		Storage.findOne({_id: req.params.id}, (err, storage)=>{
+			if(err){
+				res.json({message: "Error", error: err})
+			}
+			else{
+				storage.sampleList.push({_id:req.body._id,name:req.body.name})
+				storage.save(function(err){
+					if(err){
+						res.json({message: "Error", error: err})
+					}
+					else{
+						res.json({message: "Success"})
+					}
+				})
+			}
+		})
+	},
+	removeSampStor: (req,res)=>{
+		Storage.findOne({_id: req.params.id}, (err, storage)=>{
+			if(err){
+				res.json({message: "Error", error: err})
+			}
+			else{
+				for(let i = 0; i < storage['sampleList'].length; i++){
+					if(storage.sampleList[i]._id == req.body._id){
+						storage.sampleList.splice(i,1)
+						storage.save(function(err){
+							if(err){
+								res.json({message: "Error", error: err})
+							}
+							else{
+								res.json({message: "Success"})
+							}
+						})
+					}
+				}
+			}
+		})
+	},
 	//<== end functions for storage
 	//Functions for samples ==>
 	getSamples: (req,res)=>{
@@ -285,7 +358,7 @@ module.exports = {
 				res.json({message: "Error", error: err})
 			}
 			else{
-				res.json({message: "Success"})
+				res.json({message: "Success", data:sample})
 			}
 		})
 	},

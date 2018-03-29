@@ -39,7 +39,7 @@ export class StoreditComponent implements OnInit {
 		})
 	}
 	goStorageView(){
-		this._router.navigate(['storview'])
+		this._router.navigate(['main/storview'])
 	}
 	getLabs(){
 		this._httpService.getLabs().subscribe(data=>{
