@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   login: any; 
   errors: any; 
   errorcheck: boolean; 
+
   constructor(
     private _http: HttpService,
     private _route: ActivatedRoute, 
@@ -35,6 +36,4 @@ export class LoginComponent implements OnInit {
       }
     })
   }
-
-
 }

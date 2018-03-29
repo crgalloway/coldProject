@@ -21,8 +21,12 @@ export class LabviewComponent implements OnInit {
 	getLabs(){
 		this._httpService.getLabs().subscribe(data=>{
 			if(!data['error']){
+<<<<<<< HEAD
 				this.allLabs = data['data']
 				return data['data']
+=======
+				this.allLabs = data['data'];
+>>>>>>> 28fa8137785111ba83905e86e3394bdfc30e2075
 			}
 		})
 	}
