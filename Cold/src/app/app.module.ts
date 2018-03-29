@@ -20,9 +20,9 @@ import { SampeditComponent } from './sampedit/sampedit.component';
 import { NewuserComponent } from './newuser/newuser.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
-//new
 import { TickerDirective } from './ticker.directive';
 import { SearchComponent } from './search/search.component';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +42,6 @@ import { SearchComponent } from './search/search.component';
     SampviewComponent,
     SampeditComponent,
     MainComponent,
-    //new
     TickerDirective,
     SearchComponent
   ],

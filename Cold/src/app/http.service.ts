@@ -9,7 +9,6 @@ export class HttpService {
 	getCdcFeed(){
 		return this._http.get('/cdcrss');
 	  }
-
 	adduser(data){
 		return this._http.post('/user', data);
 	}
@@ -59,6 +58,9 @@ export class HttpService {
 	addSampleToStorage(storageID,sample){
 		return this._http.put('storage/sample/add/'+storageID, sample)
 	}
+	removeSampleFromStorage(sample){
+		return this._http.put('storage/sample/remove/'+sample.location.storage._id, sample)
+	}
 	//<==end storage services
 	//Sample-replated services ==>
 	createSample(newSample){
@@ -82,6 +84,7 @@ export class HttpService {
 	findSampleByType(query, labsName){
 		return this._http.get('/sampleFindByType/' + labsName + "/" + query );
 	}
+
 
 	//<==end sample services
 }

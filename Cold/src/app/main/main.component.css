@@ -3,7 +3,29 @@
     margin: 0px;
     padding: 0px;
 }
+.logo{
+    padding-top: 30px;
+    width: 5%;
+}
+#navbar{
+    height: 70px;
+    background-color: rgb(197, 197, 197);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
-/* #wrapper{
-    background-image: url(/assets/images/home.png);
-} */
+#sidebar{
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 0px 5px 5px 0px;
+    margin-top: 3%;
+    width: 8%;
+    background-color: #0ea2dc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+a{
+    color: white;
+}
+ul{
+    margin-left: 60%;
+}
+

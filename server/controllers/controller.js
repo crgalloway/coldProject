@@ -9,6 +9,7 @@ var Feed = require('rss-to-json');
 mongoose.connect('mongodb://localhost/cold')
 
 module.exports = {
+
 	findSamplesByName(req,res){
 		Sample.find({name: new RegExp('^'+req.params.query), 'location.lab.name': req.params.labsname}, (err, samples)=>{
 			if(!err){
@@ -62,7 +63,7 @@ module.exports = {
 					res.json({success: 'logged'})
 				}
 				else{
-					res.json({error: 'Password does not match!'})
+					res.json({error: 'Invalid Password!'})
 				}
 
 			}
@@ -142,7 +143,6 @@ module.exports = {
 		})
 	},
 	removeStorLab: (req,res)=>{
-		console.log(req.params.id)
 		Lab.findOne({_id: req.params.id}, (err, lab)=>{
 			if(err){
 				res.json({message: "Error", error: err})
@@ -160,7 +160,6 @@ module.exports = {
 							}
 						})
 					}
-					break;
 				}
 			}
 		})
@@ -273,14 +272,14 @@ module.exports = {
 		})
 	},
 	removeSampStor: (req,res)=>{
-		console.log(req.params.id)
-		Lab.findOne({_id: req.params.id}, (err, storage)=>{
+		Storage.findOne({_id: req.params.id}, (err, storage)=>{
 			if(err){
 				res.json({message: "Error", error: err})
 			}
 			else{
-				for(let i = 0; i < lab['sampleList'].length; i++){
+				for(let i = 0; i < storage['sampleList'].length; i++){
 					if(storage.sampleList[i]._id == req.body._id){
+						console.log("Igot here")
 						storage.sampleList.splice(i,1)
 						storage.save(function(err){
 							if(err){
@@ -291,7 +290,6 @@ module.exports = {
 							}
 						})
 					}
-					break;
 				}
 			}
 		})
