@@ -16,13 +16,13 @@
 		</tr>
 		<tr>
 			<td>Lab Located:</td>
-			<td><select name="location" [(ngModel)]="newStorage.location" (change)="test()">
+			<td><select name="location" [(ngModel)]="newStorage.location">
 				<option *ngFor="let each of allLabs" [ngValue]="each">{{each.name}}</option>
 			</select></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="submit" value="Create Lab"></td>
+			<td><input type="submit" value="Create Storage Unit"></td>
 		</tr>
 	</table>
 </form>

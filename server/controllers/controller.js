@@ -50,7 +50,7 @@ module.exports = {
 				res.json(err);
 			}
 			else{
-				res.json({success: 'added'})
+				res.json({success: 'added', data:newUser})
 			}
 		});
 	},
@@ -164,13 +164,13 @@ module.exports = {
 			}
 		})
 	},
-	addResLab: (req,res)=>{
+	addUserLab: (req,res)=>{
 		Lab.findOne({_id: req.params.id}, (err, lab)=>{
 			if(err){
 				res.json({message: "Error", error: err})
 			}
 			else{
-				lab.resList.push({storageId:req.body.resId,storageName:req.body.resName})
+				lab.userList.push({_id:req.body._id,firstname:req.body.firstname,lastname:req.body.lastname})
 				lab.save(function(err){
 					if(err){
 						res.json({message: "Error", error: err})
@@ -182,7 +182,7 @@ module.exports = {
 			}
 		})
 	},
-	removeResLab: (req,res)=>{
+	removeUserLab: (req,res)=>{
 		Lab.findOne({_id: req.params.id}, (err, lab)=>{
 			if(err){
 				res.json({message: "Error", error: err})
@@ -279,7 +279,6 @@ module.exports = {
 			else{
 				for(let i = 0; i < storage['sampleList'].length; i++){
 					if(storage.sampleList[i]._id == req.body._id){
-						console.log("Igot here")
 						storage.sampleList.splice(i,1)
 						storage.save(function(err){
 							if(err){

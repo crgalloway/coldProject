@@ -32,11 +32,11 @@ module.exports = (app) => {
 	app.put('/labs/storage/remove/:id',(req,res)=>{
 		ctrl.removeStorLab(req,res)
 	})
-	app.put('/labs/researcher/add/:id',(req,res)=>{
-		ctrl.addResLab(req,res)
+	app.put('/labs/user/add/:id',(req,res)=>{
+		ctrl.addUserLab(req,res)
 	})
-	app.put('/labs/researcher/remove/:id',(req,res)=>{
-		ctrl.removeResLab(req,res)
+	app.put('/labs/user/remove/:id',(req,res)=>{
+		ctrl.removeUserLab(req,res)
 	})
 	//<== end lab routes
 	//Storage routes ==>

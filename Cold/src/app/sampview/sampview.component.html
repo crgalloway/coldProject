@@ -1,5 +1,5 @@
-<a [routerLink]="['/storview']">View Storage Units</a>
-<a [routerLink]="['/labnew']">New Lab</a>
+<a [routerLink]="['main//storview']">View Storage Units</a>
+<a [routerLink]="['main//labnew']">New Lab</a>
 <h2>All Samples</h2>
 <ul *ngFor='let each of allSamples'>
 	<li><a [routerLink]="['/main/sampdetails/'+each._id]">{{ each.name }}</a>

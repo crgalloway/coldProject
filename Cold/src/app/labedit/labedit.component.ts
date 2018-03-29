@@ -30,7 +30,7 @@ export class LabeditComponent implements OnInit {
 		})
 	}
 	goLabView(){
-		this._router.navigate(['labview'])
+		this._router.navigate(['main/labview'])
 	}
 	onSubmit(){
 		this._httpService.updateLab(this.lab).subscribe(data=>{

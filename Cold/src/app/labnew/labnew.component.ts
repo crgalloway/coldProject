@@ -22,7 +22,7 @@ export class LabnewComponent implements OnInit {
 		}
 	}
 	goLabView(){
-		this._router.navigate(['labview'])
+		this._router.navigate(['main/labview'])
 	}
 	onSubmit(){
 		this._httpService.createLab(this.newLab).subscribe(data=>{

@@ -6,7 +6,7 @@
 </div>
 
 <div *ngFor="let sample of samples">
-  <h4>{{sample?.name}}</h4>
+  <h4><a [routerLink]="['/main/sampdetails/'+sample._id]">{{sample?.name}}</a></h4>
   <p>
     {{sample?._id}}
   </p>

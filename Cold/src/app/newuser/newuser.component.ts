@@ -10,6 +10,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class NewuserComponent implements OnInit {
   newuser: any; 
   errors: any; 
+  allLabs:any;
   constructor(
     private _http: HttpService,
     private _route: ActivatedRoute, 
@@ -17,10 +18,22 @@ export class NewuserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.newuser = {firstname: '', lastname: '', username: '', email: '', password: '', confirm: ''}
+    this.newuser = {firstname: '', lastname: '', username: '', email: '',lab:{_id:'', name:''}, password: '', confirm: ''}
     this.errors = {first: '', last: '', username: '', email: '', password: '', confirm: ''}
+    this.getLabs()
   }
+  getLabs(){
+    this._http.getLabs().subscribe(data=>{
+      if(!data['error']){
+        this.allLabs = data['data']
+      }
+    })
+  }
+  addUserToLab(user){
+    this._http.addUserToLab(user).subscribe(data=>{
 
+    })
+  }
   adduser(){
     if(this.newuser['password']!= this.newuser['confirm']){
       this.errors['confirm'] = 'Passwords must match!'
@@ -77,6 +90,7 @@ export class NewuserComponent implements OnInit {
           }
         }
         else{
+          this.addUserToLab(data['data'])
           this._router.navigate(['/login']);
         }
       })

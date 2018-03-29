@@ -38,6 +38,12 @@ export class HttpService {
 	removeStorageFromLab(labID, storage){
 		return this._http.put('/labs/storage/remove/'+labID, storage)
 	}
+	addUserToLab(user){
+		return this._http.put('/labs/user/add/'+user.lab._id,user)
+	}
+	removeUserFromLab(labID, user){
+		return this._http.put('/labs/user/remove/'+labID, user)
+	}
 	//<==end lab services
 	//Storage-related services ==>
 	createStorage(newStorage){
@@ -58,8 +64,8 @@ export class HttpService {
 	addSampleToStorage(storageID,sample){
 		return this._http.put('storage/sample/add/'+storageID, sample)
 	}
-	removeSampleFromStorage(sample){
-		return this._http.put('storage/sample/remove/'+sample.location.storage._id, sample)
+	removeSampleFromStorage(storageID, sample){
+		return this._http.put('storage/sample/remove/'+storageID, sample)
 	}
 	//<==end storage services
 	//Sample-replated services ==>

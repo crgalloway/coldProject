@@ -64,6 +64,6 @@ export class SampnewComponent implements OnInit {
 		})
 	}
 	goSampView(){
-		this._router.navigate(['sampview'])
+		this._router.navigate(['main/sampview'])
 	}
 }

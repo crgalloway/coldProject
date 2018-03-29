@@ -41,7 +41,7 @@ export class SampdetailsComponent implements OnInit {
 		})
 	}
 	deleteSample(){
-		this._httpService.removeSampleFromStorage(this.sample).subscribe(data=>{
+		this._httpService.removeSampleFromStorage(this.sample.location.storage._id,this.sample).subscribe(data=>{
 			if(!data['error']){
 				this._httpService.deleteSample(this.sample._id).subscribe(data=>{
 					if(!data['error']){
@@ -52,6 +52,9 @@ export class SampdetailsComponent implements OnInit {
 		})
 	}
 	goSampView(){
-		this._router.navigate(['sampview'])
+		this._router.navigate(['main/sampview'])
+	}
+	editSample(){
+		this._router.navigate(['main/sampedit/'+this.sample._id])
 	}
 }
