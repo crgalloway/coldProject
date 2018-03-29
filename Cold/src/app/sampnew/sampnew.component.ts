@@ -47,7 +47,7 @@ export class SampnewComponent implements OnInit {
 		this._httpService.getLabInfo(this.newSample.location.lab._id).subscribe(data=>{
 			if(!data['error']){
 				this.availableStorage = data['data']['storageList']
-				this.availableResearchers = data['data']['resList']
+				this.availableResearchers = data['data']['userList']
 			}
 		})
 	}

@@ -35,12 +35,12 @@ export class ViewuserComponent implements OnInit {
   deleteuser(id){
     var status = this._http.deleteuser(id)
     status.subscribe(data => {
-      this._router.navigate(['/allusers']);
+      this._router.navigate(['/main/allusers']);
     })
   }
 
   edituser(id){
-    this._router.navigate(['/edituser/'+id]);
+    this._router.navigate(['/main/edituser/'+id]);
   }
 
 }

@@ -224,15 +224,19 @@ module.exports = {
 				res.json({message: "Error", error: err})
 			}
 			else{
-				lab.resList.splice(req.body.index,1)
-				lab.save(function(err){
-					if(err){
-						res.json({message: "Error", error: err})
+				for(let i = 0; i < lab['userList'].length; i++){
+					if(lab.userList[i]._id == req.body._id){
+						lab.userList.splice(i,1)
+						lab.save(function(err){
+							if(err){
+								res.json({message: "Error", error: err})
+							}
+							else{
+								res.json({message: "Success"})
+							}
+						})
 					}
-					else{
-						res.json({message: "Success"})
-					}
-				})
+				}
 			}
 		})
 	},

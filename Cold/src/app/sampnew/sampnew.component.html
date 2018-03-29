@@ -21,7 +21,7 @@
 		<tr>
 			<td>Lab Located:</td>
 			<td><select name="lab" [(ngModel)]="newSample.location.lab" (change)="getLabInfo()">
-				<option *ngFor="let each of allLabs" [ngValue]="each" (click)="test()">{{each.name}}</option>
+				<option *ngFor="let each of allLabs" [ngValue]="each">{{each.name}}</option>
 			</select></td>
 		</tr>
 		<tr>
@@ -33,7 +33,7 @@
 		<tr>
 			<td>Created by:</td>
 			<td><select name="createdBy" [(ngModel)]="newSample.createdBy">
-				<option *ngFor="let each of availableResearchers" [ngValue]="each">{{each.firstname}}&nbsp;{{each.firstname}}</option>
+				<option *ngFor="let each of availableResearchers" [ngValue]="each">{{each.firstname}}&nbsp;{{each.lastname}}</option>
 			</select></td>
 		</tr>
 		<tr>

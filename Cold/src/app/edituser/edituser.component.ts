@@ -11,6 +11,8 @@ export class EdituserComponent implements OnInit {
   updateUser: any; 
   id: any; 
   errors: any; 
+  allLabs:any;
+  currentLab:any;
   constructor(
     private _http: HttpService, 
     private _route: ActivatedRoute, 
@@ -22,17 +24,32 @@ export class EdituserComponent implements OnInit {
       this.id = params['id']
     })
     this.getUser(this.id)
-    this.updateUser = {firstname: '', lastname: '', username: '', email: '', password: '', confirm: ''}
+    this.updateUser = {firstname: '', lastname: '', username: '', email: '',lab:{_id:'', name:''}, password: '', confirm: ''}
     this.errors = {first: '', last: '', username: '', email: '', password: '', confirm: ''}
+    this.getLabs()
   }
-
+  getLabs(){
+    this._http.getLabs().subscribe(data=>{
+      if(!data['error']){
+        this.allLabs = data['data']
+      }
+    })
+  }
   getUser(id){
     var status = this._http.getUser(id)
     status.subscribe(data =>{
       this.updateUser = data; 
+      this.currentLab = this.updateUser.lab
     })
   }
-
+  addUserToLab(user){
+    this._http.addUserToLab(user).subscribe(data=>{
+    })
+  }
+  removeUserFromLab(id, user){
+    this._http.removeUserFromLab(id, user).subscribe(data=>{
+    })
+  }
   goback(){
     this._router.navigate(['/viewuser/'+this.id])
   }
@@ -92,6 +109,8 @@ export class EdituserComponent implements OnInit {
           }
         }
         else{
+          this.addUserToLab(this.updateUser)
+          this.removeUserFromLab(this.currentLab._id, this.updateUser)
           this._router.navigate(['/viewuser/'+this.id]);
         }
       })

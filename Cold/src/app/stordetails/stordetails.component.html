@@ -15,7 +15,7 @@
 	</li>
 	<li>Researchers with access:
 		<ul>
-			<li *ngFor='let each of usersWithAccess'>{{each.firstname}}&nbsp;{{each.lastname}}</li>
+			<li *ngFor='let each of usersWithAccess'><a [routerLink]="['/main/viewuser/'+each._id]">{{each.firstname}}&nbsp;{{each.lastname}}</a></li>
 		</ul>
 	</li>
 </ul>

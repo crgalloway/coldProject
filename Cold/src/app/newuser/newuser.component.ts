@@ -31,7 +31,6 @@ export class NewuserComponent implements OnInit {
   }
   addUserToLab(user){
     this._http.addUserToLab(user).subscribe(data=>{
-
     })
   }
   adduser(){
