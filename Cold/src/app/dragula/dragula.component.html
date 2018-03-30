@@ -13,8 +13,8 @@
         <tr>
           <td *ngIf="showStorage1">Storage:</td>
           <td *ngIf="showStorage1">
-            <select [(ngModel)]="storage1ID" name="storage1ID">
-              <option *ngFor="let each of availableStorages1" [ngValue]="each._id" (click)="createDragula(1)">{{each.name}}</option>
+            <select [(ngModel)]="storage1ID" name="storage1ID" (change)="createDragula(1)">
+              <option *ngFor="let each of availableStorages1" [ngValue]="each._id" >{{each.name}}</option>
             </select>
           </td>
         </tr>
@@ -23,7 +23,6 @@
     <div *ngIf="dragula1" class='container dragula1' [dragula]='"first-bag"' [dragulaModel]='storage1.sampleList'>
         <div *ngFor='let sample of storage1.sampleList' [innerHtml]='sample.name'></div>
     </div>
-
     <div *ngIf="!dragula2" class="dragula2">
       <table>
         <tr>
@@ -37,8 +36,8 @@
         <tr>
           <td *ngIf="showStorage2">Storage:</td>
           <td *ngIf="showStorage2">
-            <select [(ngModel)]="storage2ID" name="storage2ID">
-              <option *ngFor="let each of availableStorages2" [ngValue]="each._id" (click)="createDragula(2)">{{each.name}}</option>
+            <select [(ngModel)]="storage2ID" name="storage2ID" (change)="createDragula(2)">
+              <option *ngFor="let each of availableStorages2" [ngValue]="each._id" >{{each.name}}</option>
             </select>
           </td>
         </tr>
