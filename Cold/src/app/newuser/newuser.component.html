@@ -15,7 +15,7 @@
             <td><p class="error" *ngIf="errors['last']">{{ errors.last }}</p></td>
           <tr>
             <td><label>Username: </label></td>
-            <td><input type="text" name="username" [(ngModel)]="newuser.username"></td>
+            <td><input placeholder="This is useless" type="text" name="username" [(ngModel)]="newuser.username"></td>
             <td><p class="error" *ngIf="errors['username']">{{ errors.username }}</p></td>
           </tr>
           <tr>
