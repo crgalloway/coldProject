@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -6,12 +8,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-// fullImagePath:string;
+  feed: any;
+  feedExist: Boolean;
+  innerWidth: any; 
   constructor(
-  // fullImagePath = '../../assets/images/img.jpg'
+    private _httpService: HttpService,
+    private _route: ActivatedRoute, 
+    private _router: Router
+  
   ) { }
 
   ngOnInit() {
+    this.feedExist=false;
+    this.feed=[];
+    this.getCdcFeed();
+    this.innerWidth = window.innerWidth;
   }
-
+  getCdcFeed(){
+    this._httpService.getCdcFeed().subscribe(data=>{
+      if (data['error']){
+        console.log("Error");
+      }
+      else {
+        this.feed = data['rss']['items'];
+        this.feedExist=true;
+        console.log(this.feed);
+      }
+    });
+  } 
 }

@@ -23,8 +23,9 @@ import { MainComponent } from './main/main.component';
 import { AllusersComponent } from './allusers/allusers.component';
 import { ViewuserComponent } from './viewuser/viewuser.component';
 import { EdituserComponent } from './edituser/edituser.component';
-import { TickerDirective } from './ticker.directive';
+import { TickerDirective } from './headline/ticker.directive';
 import { SearchComponent } from './search/search.component';
+import { HeadlineComponent } from './headline/headline.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SearchComponent } from './search/search.component';
     ViewuserComponent,
     EdituserComponent,
     TickerDirective,
-    SearchComponent
+    SearchComponent,
+    HeadlineComponent
   ],
   imports: [
     HttpClientModule,
