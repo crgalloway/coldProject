@@ -26,6 +26,8 @@ import { EdituserComponent } from './edituser/edituser.component';
 import { TickerDirective } from './headline/ticker.directive';
 import { SearchComponent } from './search/search.component';
 import { HeadlineComponent } from './headline/headline.component';
+import { DragulaComponent } from './dragula/dragula.component';
+import { DragulaModule } from '../../node_modules/ng2-dragula';
 
 @NgModule({
   declarations: [
@@ -50,13 +52,15 @@ import { HeadlineComponent } from './headline/headline.component';
     EdituserComponent,
     TickerDirective,
     SearchComponent,
-    HeadlineComponent
+    HeadlineComponent,
+    DragulaComponent
   ],
   imports: [
     HttpClientModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule  
+    AppRoutingModule,
+    DragulaModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
