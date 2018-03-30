@@ -6,13 +6,28 @@ export class HttpService {
 
 	constructor(private _http: HttpClient) { }
 
+	getCdcFeed(){
+		return this._http.get('/cdcrss');
+	  }
 	adduser(data){
 		return this._http.post('/user', data);
 	}
+  login(body){
+    return this._http.put('/user', body);
+  }
 
-	login(body){
-		return this._http.put('/user', body);
-	}
+  getAll(){
+    return this._http.get('/user');
+  }
+  getUser(id){
+    return this._http.get('/user/'+id);
+  }
+  deleteuser(id){
+    return this._http.delete('/user/'+id);
+  }
+  updateuser(id, body){
+    return this._http.put('/user/'+id, body);
+  }
 	//Lab-related services ==>
 	createLab(newLab){
 		return this._http.post('/labs',newLab)
@@ -35,6 +50,12 @@ export class HttpService {
 	removeStorageFromLab(labID, storage){
 		return this._http.put('/labs/storage/remove/'+labID, storage)
 	}
+	addUserToLab(user){
+		return this._http.put('/labs/user/add/'+user.lab._id,user)
+	}
+	removeUserFromLab(labID, user){
+		return this._http.put('/labs/user/remove/'+labID, user)
+	}
 	//<==end lab services
 	//Storage-related services ==>
 	createStorage(newStorage){
@@ -55,8 +76,8 @@ export class HttpService {
 	addSampleToStorage(storageID,sample){
 		return this._http.put('storage/sample/add/'+storageID, sample)
 	}
-	removeSampleFromStorage(sample){
-		return this._http.put('storage/sample/remove/'+sample.location.storage._id, sample)
+	removeSampleFromStorage(storageID, sample){
+		return this._http.put('storage/sample/remove/'+storageID, sample)
 	}
 	//<==end storage services
 	//Sample-replated services ==>
@@ -74,6 +95,12 @@ export class HttpService {
 	}
 	deleteSample(id){
 		return this._http.delete('/sample/'+id)
+	}
+	findSampleByName(query, labsName){
+		return this._http.get('/sampleFindByName/' + labsName + "/" + query );
+	}
+	findSampleByType(query, labsName){
+		return this._http.get('/sampleFindByType/' + labsName + "/" + query );
 	}
 	//<==end sample services
 }

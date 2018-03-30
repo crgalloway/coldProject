@@ -4,10 +4,45 @@ const User = mongoose.model('User')
 const Lab = mongoose.model('Lab')
 const Storage = mongoose.model('Storage')
 const Sample = mongoose.model('Sample')
+var Feed = require('rss-to-json');
 //
 mongoose.connect('mongodb://localhost/cold')
 
 module.exports = {
+
+	findSamplesByName(req,res){
+		Sample.find({name: new RegExp('^'+req.params.query), 'location.lab.name': req.params.labsname}, (err, samples)=>{
+			if(!err){
+				res.json({message: "Success", data: samples})
+			}
+			else{
+				res.json({message: "Error", error: err})
+			}
+		})
+	},
+
+	findSamplesByType(req,res){
+		Sample.find({type: new RegExp('^'+req.params.query), 'location.lab.name': req.params.labsname}, (err, samples)=>{
+			if(!err){
+				res.json({message: "Success", data: samples})
+			}
+			else{
+				res.json({message: "Error", error: err})
+			}
+		})
+	},
+
+	cdcRss(req,res){
+		Feed.load('https://t.cdc.gov/feed.aspx?format=rss2', (err, rss)=>{
+      		if (err){
+      		  res.json({ message: "Error", error: err });
+      		}
+      		else {
+      		  res.json({ message: "Success. Rss feed has been loaded.", rss: rss });
+      		}
+    	});
+	},
+
 	adduser: (req, res) => {
 		var newUser = new User(req.body);
 		newUser.save((err)=> {
@@ -15,13 +50,13 @@ module.exports = {
 				res.json(err);
 			}
 			else{
-				res.json({success: 'added'})
+				res.json({success: 'added', data:newUser})
 			}
 		});
 	},
 
 	login: (req, res) => {
-		User.findOne({email: req.body.email}, (err, user)=>{
+		User.findOne({username: req.body.username}, (err, user)=>{
 			if(err){console.log(err)}
 			if(user){
 				if(user.password == req.body.password){
@@ -34,6 +69,42 @@ module.exports = {
 			}
 			else{
 				res.json({error: 'User does not exist'})
+			}
+		})
+	},
+	getallusers: (req, res) =>{
+		User.find({}, null, {sort: {firstname: 1}}, (err, all)=>{
+			if(err){console.log(err)}
+			else{
+				res.json(all);
+			}
+		})
+	},
+	getoneuser: (req, res) => {
+		User.findOne({_id: req.params.id}, (err, user)=>{
+			if(err){
+				console.log(err)
+			}
+			else{
+				res.json(user);
+			}
+		})
+	},
+	deleteuser: (req, res)=>{
+		User.remove({_id: req.params.id}, (err) =>{
+			if(err){console.log(err)}
+			else{
+				res.json({success: 'removed'});
+			}
+		})
+	},
+	updateuser: (req, res) =>{
+		User.update({_id: req.params.id}, req.body, {runValidators: true}, (err, data)=>{
+			if(err){
+				res.json(err)
+			}
+			else{
+				res.json({success: 'updated'})
 			}
 		})
 	},
@@ -129,13 +200,13 @@ module.exports = {
 			}
 		})
 	},
-	addResLab: (req,res)=>{
+	addUserLab: (req,res)=>{
 		Lab.findOne({_id: req.params.id}, (err, lab)=>{
 			if(err){
 				res.json({message: "Error", error: err})
 			}
 			else{
-				lab.resList.push({storageId:req.body.resId,storageName:req.body.resName})
+				lab.userList.push({_id:req.body._id,firstname:req.body.firstname,lastname:req.body.lastname})
 				lab.save(function(err){
 					if(err){
 						res.json({message: "Error", error: err})
@@ -147,21 +218,25 @@ module.exports = {
 			}
 		})
 	},
-	removeResLab: (req,res)=>{
+	removeUserLab: (req,res)=>{
 		Lab.findOne({_id: req.params.id}, (err, lab)=>{
 			if(err){
 				res.json({message: "Error", error: err})
 			}
 			else{
-				lab.resList.splice(req.body.index,1)
-				lab.save(function(err){
-					if(err){
-						res.json({message: "Error", error: err})
+				for(let i = 0; i < lab['userList'].length; i++){
+					if(lab.userList[i]._id == req.body._id){
+						lab.userList.splice(i,1)
+						lab.save(function(err){
+							if(err){
+								res.json({message: "Error", error: err})
+							}
+							else{
+								res.json({message: "Success"})
+							}
+						})
 					}
-					else{
-						res.json({message: "Success"})
-					}
-				})
+				}
 			}
 		})
 	},
@@ -237,16 +312,13 @@ module.exports = {
 		})
 	},
 	removeSampStor: (req,res)=>{
-
 		Storage.findOne({_id: req.params.id}, (err, storage)=>{
 			if(err){
 				res.json({message: "Error", error: err})
 			}
 			else{
-
 				for(let i = 0; i < storage['sampleList'].length; i++){
 					if(storage.sampleList[i]._id == req.body._id){
-						console.log("Igot here")
 						storage.sampleList.splice(i,1)
 						storage.save(function(err){
 							if(err){

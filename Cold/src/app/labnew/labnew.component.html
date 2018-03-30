@@ -1,5 +1,6 @@
+<div class="main">
 <h2>New Lab</h2>
-<a [routerLink]="['labview']">Go back</a>
+<a [routerLink]="['/main/labview']">Go back</a>
 <form (submit)="onSubmit()">
 	<table>
 		<tr>
@@ -15,5 +16,5 @@
 			<td><input type="submit" value="Create Lab"></td>
 		</tr>
 	</table>
-	{{ newLab | json }}
 </form>
+</div>

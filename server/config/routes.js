@@ -10,6 +10,18 @@ module.exports = (app) => {
 	app.put('/user', (req, res)=>{
 		ctrl.login(req, res);
 	})
+	app.get('/user', (req, res)=>{
+		ctrl.getallusers(req, res);
+	})
+	app.get('/user/:id', (req, res)=>{
+		ctrl.getoneuser(req, res);
+	})
+	app.delete('/user/:id', (req, res)=>{
+		ctrl.deleteuser(req, res);
+	})
+	app.put('/user/:id', (req, res)=>{
+		ctrl.updateuser(req, res);
+	})
 	//Lab routes ==>
 	app.get('/labs', (req,res)=>{
 		ctrl.getLabs(req,res);
@@ -32,11 +44,11 @@ module.exports = (app) => {
 	app.put('/labs/storage/remove/:id',(req,res)=>{
 		ctrl.removeStorLab(req,res)
 	})
-	app.put('/labs/researcher/add/:id',(req,res)=>{
-		ctrl.addResLab(req,res)
+	app.put('/labs/user/add/:id',(req,res)=>{
+		ctrl.addUserLab(req,res)
 	})
-	app.put('/labs/researcher/remove/:id',(req,res)=>{
-		ctrl.removeResLab(req,res)
+	app.put('/labs/user/remove/:id',(req,res)=>{
+		ctrl.removeUserLab(req,res)
 	})
 	//<== end lab routes
 	//Storage routes ==>
@@ -66,6 +78,14 @@ module.exports = (app) => {
 	app.get('/sample', (req,res)=>{
 		ctrl.getSamples(req,res);
 	})
+
+	app.get('/sampleFindByType/:labsname/:query', (req, res)=>{
+		ctrl.findSamplesByType(req,res);
+	});
+	app.get('/sampleFindByName/:labsname/:query', (req, res)=>{
+		ctrl.findSamplesByName(req,res);
+	});
+
 	app.get('/sample/:id', (req,res)=>{
 		ctrl.getOneSample(req,res)
 	})
@@ -79,6 +99,10 @@ module.exports = (app) => {
 		ctrl.updateSample(req,res)
 	})
 	//<== end sample routes
+	app.get('/cdcrss', (req,res)=>{
+		ctrl.cdcRss(req,res);
+	})
+
 	app.all('*', (req, res, next)=> {
 		res.sendFile(path.resolve('./Cold/dist/index.html'));
 	})

@@ -1,13 +1,11 @@
-<p>
-  sampview works!
-</p>
-<a [routerLink]="['/storview']">View Storage Units</a>
-<a [routerLink]="['/labnew']">New Lab</a>
+<div class="main">
+<h2>All Samples</h2>
 <ul *ngFor='let each of allSamples'>
-	<li><a [routerLink]="['/sampdetails/'+each._id]">{{ each.name }}</a>
+	<li><a [routerLink]="['/main/sampdetails/'+each._id]">{{ each.name }}</a>
 		<ul>
 			<li>Type: {{ each.type }}</li>
 			<li>Description: {{ each.description }}</li>
 		</ul>
 	</li>
 </ul>
+</div>

@@ -30,7 +30,7 @@ export class LabdetailsComponent implements OnInit {
 		})
 	}
 	goLabView(){
-		this._router.navigate(['labview'])
+		this._router.navigate(['main/labview'])
 	}
 	deleteLab(id){
 		this._httpService.deleteLab(id).subscribe(data=>{
@@ -38,6 +38,6 @@ export class LabdetailsComponent implements OnInit {
 		})
 	}
 	editLab(id){
-		this._router.navigate(['labedit/'+id])
+		this._router.navigate(['main/labedit/'+id])
 	}
 }

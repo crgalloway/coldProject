@@ -1,5 +1,4 @@
 <div class="main">
-    <h1></h1>
     <form class="loginForm" (submit)="adduser()">
       <table>
         <tbody>
@@ -25,6 +24,13 @@
             <td><p class="error" *ngIf="errors['email']">{{ errors.email }}</p></td>
           </tr>
           <tr>
+            <td><label>Lab: </label></td>
+            <td><select name="lab" [(ngModel)]="newuser.lab">
+                  <option *ngFor="let each of allLabs" [ngValue]="each">{{each.name}}</option>
+                </select>
+            </td>
+          </tr>
+          <tr>
             <td><label>Password: </label></td>
             <td><input type="text" name="password" [(ngModel)]="newuser.password"></td>
             <td><p class="error" *ngIf="errors['password']">{{ errors.password }}</p></td>
@@ -36,7 +42,7 @@
           </tr>
           <br>
           <tr>
-            <td><button class="btn btn-primary">Cancel</button></td>
+            <td><button class="btn btn-primary" (click)='goback()'>Cancel</button></td>
             <td><button class="btn btn-primary" type="submit">Submit</button></td>
           </tr>
         </tbody>

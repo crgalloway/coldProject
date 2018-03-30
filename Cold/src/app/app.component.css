@@ -3,3 +3,21 @@
     margin: 0px;
     padding: 0px;
 }
+#ghost{
+    display: inline-block;
+    height: 0;
+    position: absolute;
+}
+.tickerContainer{
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+}
+.myStyles{
+    background: #eee;   
+    color: red;
+    border: 1px solid #ddd;
+    max-width: 100%;
+    cursor: pointer;
+}

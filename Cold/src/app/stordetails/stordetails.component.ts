@@ -9,6 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class StordetailsComponent implements OnInit {
 	storage:any
+	usersWithAccess:any
 	constructor(
 		private _httpService: HttpService,
 		private _route: ActivatedRoute,
@@ -31,10 +32,16 @@ export class StordetailsComponent implements OnInit {
 	getStorageInfo(id){
 		this._httpService.getStorageInfo(id).subscribe(data =>{
 			this.storage = data['data']
+			this.getUserAccessList(this.storage.location._id)
 		})
 	}
 	goStorageView(){
-		this._router.navigate(['storview'])
+		this._router.navigate(['main/storview'])
+	}
+	getUserAccessList(id){
+		this._httpService.getLabInfo(id).subscribe(data=>{
+			this.usersWithAccess=data['data']['userList']
+		})
 	}
 	deleteStorage(id){
 		this.removeStorageFromLab()
@@ -43,7 +50,7 @@ export class StordetailsComponent implements OnInit {
 		})
 	}
 	editStorage(id){
-		this._router.navigate(['storedit/'+id])
+		this._router.navigate(['main/storedit/'+id])
 	}
 	removeStorageFromLab(){
 		this._httpService.removeStorageFromLab(this.storage.location._id,this.storage).subscribe(data=>{

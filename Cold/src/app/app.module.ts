@@ -20,6 +20,11 @@ import { SampeditComponent } from './sampedit/sampedit.component';
 import { NewuserComponent } from './newuser/newuser.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { AllusersComponent } from './allusers/allusers.component';
+import { ViewuserComponent } from './viewuser/viewuser.component';
+import { EdituserComponent } from './edituser/edituser.component';
+import { TickerDirective } from './ticker.directive';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +43,18 @@ import { MainComponent } from './main/main.component';
     SampdetailsComponent,
     SampviewComponent,
     SampeditComponent,
-    MainComponent
+    MainComponent,
+    AllusersComponent,
+    ViewuserComponent,
+    EdituserComponent,
+    TickerDirective,
+    SearchComponent
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserModule,
+    AppRoutingModule  
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

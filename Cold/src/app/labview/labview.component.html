@@ -1,10 +1,12 @@
+<div class="main">
 <h2>All Labs</h2>
-<a [routerLink]="['/storview']">View Storage Units</a>
-<a [routerLink]="['/labnew']">New Lab</a>
+<a [routerLink]="['/main/storview']">View Storage Units</a>
+<a [routerLink]="['/main/labnew']">New Lab</a>
 <ul *ngFor='let each of allLabs'>
-	<li><a [routerLink]="['/labdetails/'+each._id]">{{ each.name }}</a>
+	<li><a [routerLink]="['/main/labdetails/'+each._id]">{{ each.name }}</a>
 		<ul>
 			<li>BioSafety Level: {{ each.BSL }}</li>
 		</ul>
 	</li>
 </ul>
+</div>

@@ -47,14 +47,13 @@ export class SampnewComponent implements OnInit {
 		this._httpService.getLabInfo(this.newSample.location.lab._id).subscribe(data=>{
 			if(!data['error']){
 				this.availableStorage = data['data']['storageList']
-				this.availableResearchers = data['data']['resList']
+				this.availableResearchers = data['data']['userList']
 			}
 		})
 	}
 	onSubmit(){
 		this._httpService.createSample(this.newSample).subscribe(data=>{
 			if(!data['error']){
-				console.log(this.newSample)
 				this.addSampleToStorage(this.newSample.location.storage._id, data['data'])
 				this.goSampView()
 			}
@@ -65,6 +64,6 @@ export class SampnewComponent implements OnInit {
 		})
 	}
 	goSampView(){
-		this._router.navigate(['sampview'])
+		this._router.navigate(['main/sampview'])
 	}
 }
