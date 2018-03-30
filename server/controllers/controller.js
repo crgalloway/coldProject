@@ -56,7 +56,7 @@ module.exports = {
 	},
 
 	login: (req, res) => {
-		User.findOne({email: req.body.email}, (err, user)=>{
+		User.findOne({username: req.body.username}, (err, user)=>{
 			if(err){console.log(err)}
 			if(user){
 				if(user.password == req.body.password){
@@ -69,6 +69,42 @@ module.exports = {
 			}
 			else{
 				res.json({error: 'User does not exist'})
+			}
+		})
+	},
+	getallusers: (req, res) =>{
+		User.find({}, null, {sort: {firstname: 1}}, (err, all)=>{
+			if(err){console.log(err)}
+			else{
+				res.json(all);
+			}
+		})
+	},
+	getoneuser: (req, res) => {
+		User.findOne({_id: req.params.id}, (err, user)=>{
+			if(err){
+				console.log(err)
+			}
+			else{
+				res.json(user);
+			}
+		})
+	},
+	deleteuser: (req, res)=>{
+		User.remove({_id: req.params.id}, (err) =>{
+			if(err){console.log(err)}
+			else{
+				res.json({success: 'removed'});
+			}
+		})
+	},
+	updateuser: (req, res) =>{
+		User.update({_id: req.params.id}, req.body, {runValidators: true}, (err, data)=>{
+			if(err){
+				res.json(err)
+			}
+			else{
+				res.json({success: 'updated'})
 			}
 		})
 	},
@@ -188,15 +224,19 @@ module.exports = {
 				res.json({message: "Error", error: err})
 			}
 			else{
-				lab.resList.splice(req.body.index,1)
-				lab.save(function(err){
-					if(err){
-						res.json({message: "Error", error: err})
+				for(let i = 0; i < lab['userList'].length; i++){
+					if(lab.userList[i]._id == req.body._id){
+						lab.userList.splice(i,1)
+						lab.save(function(err){
+							if(err){
+								res.json({message: "Error", error: err})
+							}
+							else{
+								res.json({message: "Success"})
+							}
+						})
 					}
-					else{
-						res.json({message: "Success"})
-					}
-				})
+				}
 			}
 		})
 	},

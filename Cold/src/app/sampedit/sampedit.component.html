@@ -1,3 +1,4 @@
+<div class="main">
 <h2>Edit Sample:</h2>
 <a [routerLink]="['/main/sampview']">Go back</a>
 <form (submit)="onSubmit()">
@@ -28,7 +29,7 @@
 				<option *ngFor="let each of allLabs" [ngValue]="each">{{each.name}}</option>
 			</select></td>
 		</tr>
-		<tr>th
+		<tr>
 			<td>Current Storage Location:</td>
 			<td>{{ currentStorage.name }}</td>
 		</tr>
@@ -48,3 +49,4 @@
 		</tr>
 	</table>
 </form>
+</div>

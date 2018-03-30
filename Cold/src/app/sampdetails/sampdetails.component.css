@@ -1,0 +1,9 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.main{
+    margin-top: 5%;
+    margin-left: 10%;
+    display: inline-block;
+    vertical-align: top;
+    width: 500px; 
+}

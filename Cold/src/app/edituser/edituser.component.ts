@@ -3,22 +3,29 @@ import { HttpService } from '../http.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-newuser',
-  templateUrl: './newuser.component.html',
-  styleUrls: ['./newuser.component.css']
+  selector: 'app-edituser',
+  templateUrl: './edituser.component.html',
+  styleUrls: ['./edituser.component.css']
 })
-export class NewuserComponent implements OnInit {
-  newuser: any; 
+export class EdituserComponent implements OnInit {
+  updateUser: any; 
+  id: any; 
   errors: any; 
   allLabs:any;
+  currentLab:any;
   constructor(
-    private _http: HttpService,
+    private _http: HttpService, 
     private _route: ActivatedRoute, 
-    private _router: Router
+    private _router: Router 
   ) { }
 
   ngOnInit() {
-    this.newuser = {firstname: '', lastname: '', username: '', email: '',lab:{_id:'', name:''}, password: '', confirm: ''}
+    this._route.params.subscribe((params: Params)=>{
+      this.id = params['id']
+    })
+    this.currentLab = ''
+    this.getUser(this.id)
+    this.updateUser = {firstname: '', lastname: '', username: '', email: '',lab:{_id:'', name:''}, password: '', confirm: ''}
     this.errors = {first: '', last: '', username: '', email: '', password: '', confirm: ''}
     this.getLabs()
   }
@@ -29,21 +36,32 @@ export class NewuserComponent implements OnInit {
       }
     })
   }
+  getUser(id){
+    var status = this._http.getUser(id)
+    status.subscribe(data =>{
+      this.updateUser = data; 
+      this.currentLab = this.updateUser.lab
+    })
+  }
   addUserToLab(user){
     this._http.addUserToLab(user).subscribe(data=>{
     })
   }
-  goback(){
-    this._router.navigate(['/main'])
+  removeUserFromLab(id, user){
+    this._http.removeUserFromLab(id, user).subscribe(data=>{
+    })
   }
-  adduser(){
-    if(this.newuser['password']!= this.newuser['confirm']){
+  goback(){
+    this._router.navigate(['/viewuser/'+this.id])
+  }
+
+  updateuser(){
+    if(this.updateUser['password']!= this.updateUser['confirm']){
       this.errors['confirm'] = 'Passwords must match!'
     }
     else{
-      var status = this._http.adduser(this.newuser);
-      status.subscribe(data => {
-        console.log(data);
+      var status = this._http.updateuser(this.id, this.updateUser)
+      status.subscribe(data =>{
         if(data['errors']){
           if(data['errors']['firstname']){
             if(data['errors']['firstname']['kind']== 'required'){
@@ -93,10 +111,9 @@ export class NewuserComponent implements OnInit {
           }
         }
         else{
-          if(data['data']['lab']['name']!=''){
-            this.addUserToLab(data['data'])
-          }
-          this._router.navigate(['/main/allusers']);
+          this.addUserToLab(this.updateUser)
+          this.removeUserFromLab(this.currentLab._id, this.updateUser)
+          this._router.navigate(['/viewuser/'+this.id]);
         }
       })
     }

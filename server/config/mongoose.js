@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 
 const UserSchema = require('../models/user')
+const beautifyunique = require('mongoose-beautiful-unique-validation');
+UserSchema.plugin(beautifyunique);
 mongoose.model('User', UserSchema)
 
 const LabSchema = require('../models/lab')

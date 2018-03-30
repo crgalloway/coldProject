@@ -1,3 +1,4 @@
+<div class="main">
 <h2>Details about {{storage.name}}:</h2>
 <h3>Location: <a [routerLink]="['/main/labdetails/'+storage.location._id]">{{ storage.location.name }}</a></h3>
 <h5>Type: {{ storage.type }}</h5>
@@ -15,8 +16,9 @@
 	</li>
 	<li>Researchers with access:
 		<ul>
-			<li *ngFor='let each of usersWithAccess'>{{each.firstname}}&nbsp;{{each.lastname}}</li>
+			<li *ngFor='let each of usersWithAccess'><a [routerLink]="['/main/viewuser/'+each._id]">{{each.firstname}}&nbsp;{{each.lastname}}</a></li>
 		</ul>
 	</li>
 </ul>
 <button (click)=editStorage(storage._id)>Edit</button><br><button (click)=deleteStorage(storage._id)>Delete</button>
+</div>

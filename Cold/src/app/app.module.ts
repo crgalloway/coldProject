@@ -20,6 +20,9 @@ import { SampeditComponent } from './sampedit/sampedit.component';
 import { NewuserComponent } from './newuser/newuser.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { AllusersComponent } from './allusers/allusers.component';
+import { ViewuserComponent } from './viewuser/viewuser.component';
+import { EdituserComponent } from './edituser/edituser.component';
 import { TickerDirective } from './ticker.directive';
 import { SearchComponent } from './search/search.component';
 import { DragulaComponent } from './dragula/dragula.component';
@@ -43,6 +46,9 @@ import { DragulaModule } from '../../node_modules/ng2-dragula';
     SampviewComponent,
     SampeditComponent,
     MainComponent,
+    AllusersComponent,
+    ViewuserComponent,
+    EdituserComponent,
     TickerDirective,
     SearchComponent,
     DragulaComponent

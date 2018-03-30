@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.login = {email: '', password: ''};
+    this.login = {username: '', password: ''};
     this.errors = ''
     this.errorcheck = false; 
   }
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.errorcheck = true; 
       }
       else{
-        this._router.navigate(['/newuser']);
+        this._router.navigate(['/main']);
       }
     })
   }
