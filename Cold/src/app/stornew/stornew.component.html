@@ -5,25 +5,25 @@
 	<table>
 		<tr>
 			<td>Name:</td>
-			<td><input type="text" name="name" id="name" [(ngModel)]="newStorage.name"></td>
+			<td><input class="form-control" type="text" name="name" id="name" [(ngModel)]="newStorage.name"></td>
 		</tr>
 		<tr>
 			<td>Type:</td>
-			<td><input type="text" name="type" id="type" [(ngModel)]="newStorage.type"></td>
+			<td><input class="form-control" type="text" name="type" id="type" [(ngModel)]="newStorage.type"></td>
 		</tr>
 		<tr>
 			<td>Temperature:</td>
-			<td><input type="text" name="temp" id="temp" [(ngModel)]="newStorage.temp"></td>
+			<td><input class="form-control" type="text" name="temp" id="temp" [(ngModel)]="newStorage.temp"></td>
 		</tr>
 		<tr>
 			<td>Lab Located:</td>
-			<td><select name="location" [(ngModel)]="newStorage.location">
+			<td><select class="form-control" name="location" [(ngModel)]="newStorage.location">
 				<option *ngFor="let each of allLabs" [ngValue]="each">{{each.name}}</option>
 			</select></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="submit" value="Create Storage Unit"></td>
+			<td><input style="float: right;" class="btn btn-primary" type="submit" value="Create Storage Unit"></td>
 		</tr>
 	</table>
 </form>

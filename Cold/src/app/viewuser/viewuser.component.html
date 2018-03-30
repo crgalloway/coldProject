@@ -4,6 +4,6 @@
   <p>Username: {{  User.username }}</p>
   <p>Email: {{  User.email }}</p>
   <p>Lab: {{User.lab.name}}</p>
-  <button (click)='deleteuser(User._id)'>Delete User</button> &nbsp; 
-  <button (click)='edituser(User._id)'>Edit User</button>
+  <button class="btn btn-danger" (click)='deleteuser(User._id)'>Delete User</button> &nbsp; 
+  <button class="btn btn-primary" (click)='edituser(User._id)'>Edit User</button>
 </div>

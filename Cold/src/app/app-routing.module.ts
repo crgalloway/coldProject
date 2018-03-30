@@ -45,7 +45,7 @@ const routes: Routes = [
 	  {path: 'edituser/:id', component: EdituserComponent},
 		{path: '*', redirectTo: '/main', pathMatch: 'full'}
 	]},  
-  {path: '**', redirectTo: '/main', pathMatch: 'full'}
+  {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({

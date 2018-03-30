@@ -1,11 +1,12 @@
 <div id="main">
+  <h2>Move Samples</h2>
   <div class='wrapper'>
     <div *ngIf="!dragula1" class="dragula1">
       <table>
         <tr>
           <td>Lab:</td>
           <td>
-            <select [(ngModel)]="lab1" name="lab1" (change)="getLab(1, this.lab1)">
+            <select class="form-control" [(ngModel)]="lab1" name="lab1" (change)="getLab(1, this.lab1)">
               <option *ngFor="let each of allLabs" [ngValue]="each._id" (click)="showStorages(1)">{{each.name}}</option>
             </select>
           </td>
@@ -13,7 +14,7 @@
         <tr>
           <td *ngIf="showStorage1">Storage:</td>
           <td *ngIf="showStorage1">
-            <select [(ngModel)]="storage1ID" name="storage1ID">
+            <select class="form-control" [(ngModel)]="storage1ID" name="storage1ID">
               <option *ngFor="let each of availableStorages1" [ngValue]="each._id" (click)="createDragula(1)">{{each.name}}</option>
             </select>
           </td>
@@ -29,7 +30,7 @@
         <tr>
           <td>Lab:</td>
           <td>
-            <select [(ngModel)]="lab2" name="lab2" (change)="getLab(2, this.lab2)">
+            <select class="form-control" [(ngModel)]="lab2" name="lab2" (change)="getLab(2, this.lab2)">
               <option *ngFor="let each of allLabs" [ngValue]="each._id" (click)="showStorages(2)">{{each.name}}</option>
             </select>
           </td>
@@ -37,7 +38,7 @@
         <tr>
           <td *ngIf="showStorage2">Storage:</td>
           <td *ngIf="showStorage2">
-            <select [(ngModel)]="storage2ID" name="storage2ID">
+            <select class="form-control" [(ngModel)]="storage2ID" name="storage2ID">
               <option *ngFor="let each of availableStorages2" [ngValue]="each._id" (click)="createDragula(2)">{{each.name}}</option>
             </select>
           </td>
@@ -48,5 +49,5 @@
         <div *ngFor='let sample of storage2.sampleList' [innerHtml]='sample.name'></div>
     </div>
   </div>
-  <button (click)="applyChanges()">Apply Changes</button>
+  <button class="btn btn-primary" (click)="applyChanges()">Apply Changes</button>
 </div>

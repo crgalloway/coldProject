@@ -4,6 +4,7 @@
 }
 
 .main{
+    font-size: 1.5rem;
     margin-top: 5%;
     margin-left: 10%;
     display: inline-block;
@@ -13,4 +14,10 @@
 
 .error{
     color: red; 
+}
+.btn{
+    width: 80px;
+    margin-left: 14px;
+    
+    
 }
