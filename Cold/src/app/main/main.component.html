@@ -35,7 +35,7 @@
 
 <div id="sidebar">
 <nav class="nav flex-column">
-  <a class="nav-link" [routerLink]="['/'+currentRoute[0].path]" (click)='toggleSearch()'><img src="../assets/images/icons/zoom.png" alt="register">&nbsp; Search</a>
+  <a id="search-btn" (click)='toggleSearch()'><img src="../assets/images/icons/zoom.png" alt="register">&nbsp; Search</a>
   <a class="nav-link" [routerLink]="['/main/labview']"><img src="../assets/images/icons/lab.png" alt="register">&nbsp; View All Labs</a>
   <a class="nav-link" [routerLink]="['/main/storview']"><img src="../assets/images/icons/freezer.png" alt="register">&nbsp; View All Freezers</a>
   <a class="nav-link" [routerLink]="['/main/sampview']"><img src="../assets/images/icons/pdish.png" alt="register">&nbsp; View All Samples</a>

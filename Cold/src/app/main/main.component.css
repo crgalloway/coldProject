@@ -57,3 +57,10 @@ ul {
     vertical-align: top;
     
 }
+#search-btn{
+    color: white;
+    margin-left: 15px;
+}
+#search-btn:hover{
+    color: #0056b8;
+}

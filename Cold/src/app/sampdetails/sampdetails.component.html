@@ -9,5 +9,5 @@
 	<li>Storage Unit: <a [routerLink]="['/main/stordetails/'+sample.location.storage._id]">{{sample.location.storage.name}}</a></li>
 </ul>
 <p>Created/ordered by: {{sample.createdBy.firstname}} {{sample.createdBy.lastname}}</p>
-<button class="btn btn-primary" (click)=editSample()>Edit</button>&nbsp;<button class="btn btn-primary" (click)=deleteSample()>Delete</button>
+<button class="btn btn-primary" (click)=editSample()>Edit</button>&nbsp;<button class="btn btn-danger" (click)=deleteSample()>Delete</button>
 </div>

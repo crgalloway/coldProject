@@ -21,7 +21,7 @@
         </tr>
       </table>
     </div>
-    <div *ngIf="dragula1" class='container dragula1' [dragula]='"first-bag"' [dragulaModel]='storage1.sampleList'>
+    <div id="drag1" *ngIf="dragula1" class="alert alert-primary"  [dragula]='"first-bag"' [dragulaModel]='storage1.sampleList'>
         <div *ngFor='let sample of storage1.sampleList' [innerHtml]='sample.name'></div>
     </div>
     <div *ngIf="!dragula2" class="dragula2">
@@ -44,9 +44,9 @@
         </tr>
       </table>
     </div>
-    <div *ngIf="dragula2" class='container dragula2' [dragula]='"first-bag"' [dragulaModel]='storage2.sampleList'>
+    <div id="drag2" *ngIf="dragula2" class="alert alert-primary" [dragula]='"first-bag"' [dragulaModel]='storage2.sampleList'>
         <div *ngFor='let sample of storage2.sampleList' [innerHtml]='sample.name'></div>
     </div>
   </div>
-  <button class="btn btn-primary" (click)="applyChanges()">Apply Changes</button>
+  <button class="btn btn-primary" *ngIf="dragula2 && dragula1" (click)="applyChanges()">Apply Changes</button>
 </div>
