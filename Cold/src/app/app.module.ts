@@ -22,7 +22,8 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { TickerDirective } from './ticker.directive';
 import { SearchComponent } from './search/search.component';
-
+import { DragulaComponent } from './dragula/dragula.component';
+import { DragulaModule } from '../../node_modules/ng2-dragula';
 
 @NgModule({
   declarations: [
@@ -43,13 +44,15 @@ import { SearchComponent } from './search/search.component';
     SampeditComponent,
     MainComponent,
     TickerDirective,
-    SearchComponent
+    SearchComponent,
+    DragulaComponent
   ],
   imports: [
     HttpClientModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule  
+    AppRoutingModule,
+    DragulaModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

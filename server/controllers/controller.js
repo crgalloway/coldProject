@@ -244,7 +244,7 @@ module.exports = {
 		})
 	},
 	updateStorage: (req,res)=>{
-		Storage.update({_id:req.params.id},{name: req.body.name, type:req.body.type, temp:req.body.temp, location:req.body.location}, {runValidators:true}, (err)=>{
+		Storage.update({_id:req.params.id}, req.body, {runValidators:true}, (err)=>{
 			if(err){
 				res.json({message: "Error", error: err})
 			}
