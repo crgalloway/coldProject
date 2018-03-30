@@ -11,6 +11,8 @@ export class MainComponent implements OnInit {
   feed: any;
   feedExist: Boolean;
   innerWidth: any; 
+  showSearch:Boolean
+  currentRoute: any;
   constructor(
     private _httpService: HttpService,
     private _route: ActivatedRoute, 
@@ -19,10 +21,13 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.currentRoute = this._route.snapshot.url
+    console.log(this.currentRoute)
     this.feedExist=false;
     this.feed=[];
     this.getCdcFeed();
     this.innerWidth = window.innerWidth;
+    this.showSearch = false
   }
   getCdcFeed(){
     this._httpService.getCdcFeed().subscribe(data=>{
@@ -36,4 +41,11 @@ export class MainComponent implements OnInit {
       }
     });
   } 
+  toggleSearch(){
+    if(this.showSearch){
+      this.showSearch=false
+    }else{
+      this.showSearch=true
+    }
+  }
 }

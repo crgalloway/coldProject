@@ -20,10 +20,12 @@ import { ViewuserComponent } from './viewuser/viewuser.component';
 import { AllusersComponent } from './allusers/allusers.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { HeadlineComponent } from './headline/headline.component';
+import { DragulaComponent } from './dragula/dragula.component';
 
 const routes: Routes = [
 	{path: 'login', component: LoginComponent},
 	{path: 'main', component: MainComponent, children:[
+		{path: 'dragula', component: DragulaComponent},
 		{path: 'newuser', component: NewuserComponent},
 		{path: 'headline', component: HeadlineComponent},
 		{path:'labnew', component:LabnewComponent},
