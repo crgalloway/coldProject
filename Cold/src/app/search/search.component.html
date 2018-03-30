@@ -7,9 +7,6 @@
 
 <div *ngFor="let sample of samples">
   <h4><a [routerLink]="['/main/sampdetails/'+sample._id]">{{sample?.name}}</a></h4>
-  <p>
-    {{sample?._id}}
-  </p>
 </div>
 
 <div *ngIf="samples?.length < 1">
