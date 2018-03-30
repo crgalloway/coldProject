@@ -1,10 +1,15 @@
 <h1>Sample Search</h1>
-<div *ngIf="labsExist">
-    <input type="text" (keyup)="search($event)" placeholder="search samples..." class="input">
-    <select [(ngModel)]="searchBy" name="searchBy" id="searchBy"><option value="1">by Name</option><option value="2">by Type</option></select>
-    <select [(ngModel)]="searchLab" name="searchLab" id="searchLab"><option *ngFor="let lab of labs" [ngValue]="lab.name">{{ lab.name }}</option></select>
+<div class="form-row">
+<div class="form-group col-md-5" *ngIf="labsExist">
+    <input class="form-control" type="text" (keyup)="search($event)" placeholder="search samples...">
 </div>
-<hr>
+<div class="form-group col-md-3" >
+<select class="form-control" [(ngModel)]="searchBy" name="searchBy" id="searchBy"><option value="1">by Name</option><option value="2">by Type</option></select>
+</div>
+<div class="form-group col-md-4">
+  <select class="form-control" [(ngModel)]="searchLab" name="searchLab" id="searchLab"><option *ngFor="let lab of labs" [ngValue]="lab.name">{{ lab.name }}</option></select>
+</div>
+</div>
 <div *ngFor="let sample of samples">
   <h4><a [routerLink]="['/main/sampdetails/'+sample._id]">{{sample?.name}}</a></h4>
 </div>

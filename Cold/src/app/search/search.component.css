@@ -1,4 +1,2 @@
-.error{
-    color: #007bff;
-    font-size: 17px;
-}
+
+@import '~bootstrap/dist/css/bootstrap.min.css';

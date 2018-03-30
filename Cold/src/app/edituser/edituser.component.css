@@ -1,9 +1,14 @@
 .loginForm{
-    border: 2px solid black; 
     padding: 10px; 
 }
 
+
 .main{
+    font-size: 1.5rem;
+    margin-top: 5%;
+    margin-left: 10%;
+    display: inline-block;
+    vertical-align: top;
     width: 500px; 
 }
 
@@ -17,4 +22,7 @@
 
 .error{
     color: red; 
+}
+#btn{
+    float: right;
 }
