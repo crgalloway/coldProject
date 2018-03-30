@@ -47,24 +47,17 @@ export class DragulaComponent implements OnInit {
     this._httpService.getLabInfo(id).subscribe(data=>{
 			if(!data['error']){
         if (label == 1){
+          this.showStorage1=true;
           this.availableStorages1 = data['data']['storageList'];
         }
 				else if (label == 2){
+          this.showStorage2=true;
           this.availableStorages2 = data['data']['storageList'];
         }
 			}
 		})
   }
 
-  showStorages(label){
-    if (label==1){
-      this.showStorage1=true;
-    }
-    else if (label==2){
-      this.showStorage2=true;
-    }
-  }
-  
   createDragula(label){
     if (label == 1){
       this._httpService.getStorageInfo(this.storage1ID).subscribe(data=>{

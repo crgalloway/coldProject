@@ -12,12 +12,14 @@ export class SearchComponent implements OnInit {
   labs;
   labsExist: Boolean;
   searchLab; //name
-  
+  searchActive: Boolean;
+
   constructor(
     private _httpService: HttpService,
   ) { }
 
   ngOnInit() {
+    this.searchActive = false;
     this.labsExist = false;
     this.samples = [];
     this.searchBy = '1'; //1 - name | 2 - type
@@ -38,6 +40,7 @@ export class SearchComponent implements OnInit {
 //name, type, created_by
 //filter: location, num of results
   search($event) {
+      this.searchActive = true;
       let q = $event.target.value
       if (this.searchBy=="1"){
         if (q.length>0){
@@ -47,6 +50,7 @@ export class SearchComponent implements OnInit {
         }
         else{
           this.samples = [];
+          this.searchActive = false;
         }
       }
       else if (this.searchBy=="2"){
@@ -57,8 +61,8 @@ export class SearchComponent implements OnInit {
         }
         else{
           this.samples = [];
+          this.searchActive = false;
         }
-      }
-    console.log(this.samples);      
+      }    
   }
 }

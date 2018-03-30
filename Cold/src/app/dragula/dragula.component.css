@@ -11,11 +11,15 @@
     padding-right: 5%;
     width: 40%;
     display: inline-block;
+    padding: 10px;
+    vertical-align: top
 }
 .dragula2{
     font-size: 1.5rem;
     width: 40%;
     display: inline-block;
+    padding: 10px;
+    vertical-align: top
 }
 .container{
     border: 2px solid pink;
