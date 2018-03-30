@@ -102,7 +102,5 @@ export class HttpService {
 	findSampleByType(query, labsName){
 		return this._http.get('/sampleFindByType/' + labsName + "/" + query );
 	}
-
-
 	//<==end sample services
 }
