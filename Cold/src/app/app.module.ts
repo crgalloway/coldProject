@@ -25,6 +25,8 @@ import { ViewuserComponent } from './viewuser/viewuser.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { TickerDirective } from './ticker.directive';
 import { SearchComponent } from './search/search.component';
+import { DragulaComponent } from './dragula/dragula.component';
+import { DragulaModule } from '../../node_modules/ng2-dragula';
 
 @NgModule({
   declarations: [
@@ -48,13 +50,15 @@ import { SearchComponent } from './search/search.component';
     ViewuserComponent,
     EdituserComponent,
     TickerDirective,
-    SearchComponent
+    SearchComponent,
+    DragulaComponent
   ],
   imports: [
     HttpClientModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule  
+    AppRoutingModule,
+    DragulaModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
