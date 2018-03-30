@@ -21,10 +21,7 @@
         <a class="nav-link" [routerLink]="['/main/newuser']"><img src="../assets/images/icons/reg_ic.png" alt="register">New User</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input id="search-field" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button id="search-btn" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+   
   </div>
 </nav>
 <div class="tickerContainer myStyles" *ngIf="feedExist">
@@ -32,15 +29,23 @@
 </div>
 <div id="ghost"></div>
 </div>
+
 <div id="sidebar">
 <nav class="nav flex-column">
-  <a class="nav-link" [routerLink]="['/main/labview']">View All Labs</a>
-  <a class="nav-link" [routerLink]="['/main/storview']">View All Freezers</a>
-  <a class="nav-link" [routerLink]="['/main/sampview']">View All Samples</a>
-  <a class="nav-link" [routerLink]="['/main/allusers']">View All Users</a>
-  <a class="nav-link" [routerLink]="['/main/labnew']">Create Lab</a>
-  <a class="nav-link active" [routerLink]="['/main/stornew']">Create Freezer</a>
-  <a class="nav-link" [routerLink]="['/main/sampnew']">Create Sample</a>
+  <a class="nav-link" [routerLink]="['/'+currentRoute[0].path]" (click)='toggleSearch()'><img src="../assets/images/icons/zoom.png" alt="register">&nbsp; Search</a>
+  <a class="nav-link" [routerLink]="['/main/labview']"><img src="../assets/images/icons/lab.png" alt="register">&nbsp; View All Labs</a>
+  <a class="nav-link" [routerLink]="['/main/storview']"><img src="../assets/images/icons/freezer.png" alt="register">&nbsp; View All Freezers</a>
+  <a class="nav-link" [routerLink]="['/main/sampview']"><img src="../assets/images/icons/pdish.png" alt="register">&nbsp; View All Samples</a>
+  <a class="nav-link" [routerLink]="['/main/allusers']"><img src="../assets/images/icons/user.png" alt="register">&nbsp; View All Users</a>
+  <a class="nav-link" [routerLink]="['/main/labnew']"><img src="../assets/images/icons/clab.png" alt="register">&nbsp; Create Lab</a>
+  <a class="nav-link active" [routerLink]="['/main/stornew']"><img src="../assets/images/icons/cfreezer.png" alt="register">&nbsp; Create Freezer</a>
+  <a class="nav-link" [routerLink]="['/main/sampnew']"><img src="../assets/images/icons/csample.png" alt="register">&nbsp; Create Sample</a>
+  <a class="nav-link" [routerLink]="['/main/dragula']"><img src="../assets/images/icons/csample.png" alt="register">&nbsp; Move Samples</a>
+  
 </nav>
+
 </div>
+
 <router-outlet></router-outlet>
+<div id="search-div" *ngIf="showSearch"><app-search></app-search></div>
+

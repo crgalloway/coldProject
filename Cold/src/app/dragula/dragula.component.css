@@ -1,9 +1,17 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+#main{
+    margin-top: 5%;
+    margin-left: 10%;
+    display: inline-block;
+    vertical-align: top;
+    width: 500px; 
+}
 .dragula1{
-    width: 30%;
+    width: 35%;
     display: inline-block;
 }
 .dragula2{
-    width: 30%;
+    width: 35%;
     display: inline-block;
 }
 .container{
