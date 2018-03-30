@@ -4,13 +4,10 @@
     <select [(ngModel)]="searchBy" name="searchBy" id="searchBy"><option value="1">by Name</option><option value="2">by Type</option></select>
     <select [(ngModel)]="searchLab" name="searchLab" id="searchLab"><option *ngFor="let lab of labs" [ngValue]="lab.name">{{ lab.name }}</option></select>
 </div>
-
+<hr>
 <div *ngFor="let sample of samples">
   <h4><a [routerLink]="['/main/sampdetails/'+sample._id]">{{sample?.name}}</a></h4>
 </div>
-
-<div *ngIf="samples?.length < 1">
-  <hr>
-  <p>
-  </p>
+<div *ngIf="samples?.length < 1 && searchActive">
+  <p class="error">Your search did not match any samples.</p>
 </div>

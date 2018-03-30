@@ -47,5 +47,5 @@
         <div *ngFor='let sample of storage2.sampleList' [innerHtml]='sample.name'></div>
     </div>
   </div>
-  <button (click)="applyChanges()">Apply Changes</button>
+  <button *ngIf="dragula2 && dragula1" (click)="applyChanges()">Apply Changes</button>
 </div>

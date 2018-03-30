@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost/cold')
 module.exports = {
 
 	findSamplesByName(req,res){
-		Sample.find({name: new RegExp('^'+req.params.query), 'location.lab.name': req.params.labsname}, (err, samples)=>{
+		Sample.find({name: {'$regex': '^'+req.params.query, $options:'i'}, 'location.lab.name': req.params.labsname}, (err, samples)=>{
 			if(!err){
 				res.json({message: "Success", data: samples})
 			}
@@ -22,7 +22,7 @@ module.exports = {
 	},
 
 	findSamplesByType(req,res){
-		Sample.find({type: new RegExp('^'+req.params.query), 'location.lab.name': req.params.labsname}, (err, samples)=>{
+		Sample.find({type: {'$regex': '^'+req.params.query, $options:'i'}, 'location.lab.name': req.params.labsname}, (err, samples)=>{
 			if(!err){
 				res.json({message: "Success", data: samples})
 			}
